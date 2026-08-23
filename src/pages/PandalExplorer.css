@@ -1,0 +1,724 @@
+
+/* =========================================
+   PANDAL EXPLORER
+========================================= */
+
+.pandal-explorer-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  padding: 110px 25px 80px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 5, 15, 0.72),
+      rgba(70, 15, 35, 0.65)
+    ),
+    url("https://c8.alamy.com/comp/2FM9YMM/abstract-bokeh-light-and-blurred-view-of-goddess-durga-idol-decorated-at-puja-pandal-in-kolkata-2FM9YMM.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: white;
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.pandal-explorer-page::before {
+  content: "";
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  top: -180px;
+  left: -150px;
+
+  background: rgba(255, 170, 50, 0.18);
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  animation: glowMove 7s ease-in-out infinite alternate;
+}
+
+.pandal-explorer-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  right: -150px;
+  bottom: -150px;
+
+  background: rgba(220, 60, 100, 0.18);
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  animation: glowMove2 8s ease-in-out infinite alternate;
+}
+
+
+@keyframes glowMove {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(100px, 80px);
+  }
+}
+
+
+@keyframes glowMove2 {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-80px, -60px);
+  }
+}
+
+
+/* =========================================
+   DARK OVERLAY
+========================================= */
+
+.pandal-explorer-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.75)
+    );
+
+  backdrop-filter: blur(2px);
+
+  z-index: 0;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.pandal-explorer-content {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.explorer-header {
+  animation: fadeDown 1s ease forwards;
+}
+
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.explorer-small-title {
+  display: inline-block;
+
+  padding: 8px 18px;
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(10px);
+
+  letter-spacing: 4px;
+
+  font-size: 12px;
+
+  color: #ffd98a;
+
+  box-shadow:
+    0 0 25px rgba(255, 180, 60, 0.12);
+}
+
+
+.explorer-header h1 {
+  margin: 25px 0 10px;
+
+  font-size: clamp(45px, 7vw, 82px);
+
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  text-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+.explorer-header h1 span {
+  display: inline-block;
+
+  font-style: italic;
+
+  color: #ffd36a;
+
+  font-family: Georgia, serif;
+
+  animation: goldenText 3s ease-in-out infinite alternate;
+}
+
+
+@keyframes goldenText {
+  from {
+    text-shadow:
+      0 0 5px rgba(255, 200, 80, 0.2);
+  }
+
+  to {
+    text-shadow:
+      0 0 25px rgba(255, 200, 80, 0.45);
+  }
+}
+
+
+.explorer-header p {
+  max-width: 620px;
+
+  margin: 25px auto 0;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   LOCATION SEARCH
+========================================= */
+
+.location-search {
+  position: relative;
+
+  max-width: 850px;
+
+  margin: 45px auto 0;
+
+  padding: 30px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.04)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.35);
+
+  animation: searchAppear 1s ease 0.3s both;
+}
+
+
+@keyframes searchAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+.location-search label {
+  display: block;
+
+  margin-bottom: 15px;
+
+  font-size: 17px;
+
+  font-weight: 500;
+
+  color: #ffe7b0;
+}
+
+
+/* =========================================
+   SEARCH BOX
+========================================= */
+
+.search-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 7px;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    border 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.search-box:focus-within {
+  border-color: rgba(255, 204, 100, 0.7);
+
+  box-shadow:
+    0 0 25px rgba(255, 190, 70, 0.15);
+}
+
+
+.search-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 17px 20px;
+
+  background: transparent;
+
+  border: none;
+
+  outline: none;
+
+  color: white;
+
+  font-size: 16px;
+}
+
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================
+   SEARCH BUTTON
+========================================= */
+
+.search-box button {
+  padding: 15px 26px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd36a,
+      #ff9f43
+    );
+
+  color: #30120b;
+
+  font-weight: 700;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px rgba(255, 160, 50, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.search-box button:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 35px rgba(255, 170, 60, 0.4);
+}
+
+
+.search-box button:active {
+  transform: scale(0.96);
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.pandal-results {
+  margin-top: 70px;
+
+  animation: resultsAppear 0.8s ease both;
+}
+
+
+@keyframes resultsAppear {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.results-heading {
+  display: flex;
+
+  align-items: end;
+
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+
+  text-align: left;
+}
+
+
+.results-heading h2 {
+  margin: 0;
+
+  font-size: 28px;
+}
+
+
+.results-heading h2 span {
+  color: #ffd36a;
+}
+
+
+.results-heading > span {
+  padding: 7px 14px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   PANDAL GRID
+========================================= */
+
+.pandal-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 25px;
+
+  text-align: left;
+}
+
+
+/* =========================================
+   PANDAL CARD
+========================================= */
+
+.pandal-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(255, 255, 255, 0.045)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border 0.35s ease;
+
+  animation: cardAppear 0.6s ease both;
+}
+
+
+.pandal-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.pandal-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.pandal-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.pandal-card:hover {
+  transform: translateY(-10px);
+
+  border-color:
+    rgba(255, 211, 106, 0.4);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 180, 70, 0.08);
+}
+
+
+/* =========================================
+   CARD IMAGE
+========================================= */
+
+.pandal-card-image {
+  height: 180px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 65px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 190, 80, 0.18),
+      transparent 65%
+    );
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  transition: transform 0.4s ease;
+}
+
+
+.pandal-card:hover .pandal-card-image {
+  transform: scale(1.05);
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.pandal-card-content {
+  padding: 23px;
+}
+
+
+.pandal-number {
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  color: #ffd36a;
+
+  font-weight: 600;
+}
+
+
+.pandal-card h3 {
+  margin: 10px 0 15px;
+
+  font-size: 21px;
+}
+
+
+.pandal-card p {
+  margin: 7px 0;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MAP BUTTON
+========================================= */
+
+.map-button {
+  margin-top: 15px;
+
+  padding: 11px 18px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(255, 211, 106, 0.25);
+
+  background: rgba(255, 211, 106, 0.08);
+
+  color: #ffd36a;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.map-button:hover {
+  background: rgba(255, 211, 106, 0.18);
+
+  transform: translateX(5px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .pandal-explorer-page {
+    padding: 100px 16px 60px;
+  }
+
+
+  .explorer-small-title {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .explorer-header h1 {
+    font-size: 48px;
+
+    letter-spacing: -1px;
+  }
+
+
+  .explorer-header p {
+    font-size: 15px;
+  }
+
+
+  .location-search {
+    padding: 20px;
+
+    border-radius: 22px;
+  }
+
+
+  .search-box {
+    flex-direction: column;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    padding: 8px;
+  }
+
+
+  .search-box input {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+
+  .search-box button {
+    width: 100%;
+  }
+
+
+  .results-heading {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+
+  .pandal-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -1,0 +1,203 @@
+/* =================================
+   REALISTIC DHAKI
+================================= */
+
+.real-dhaki-container {
+  position: fixed;
+
+  right: 1px;
+  bottom: 0;
+
+  width: 150px;
+  height: 280px;
+
+  z-index: 1000;
+
+  pointer-events: none;
+}
+
+
+/* =================================
+   DHAKI IMAGE
+================================= */
+
+.real-dhaki {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 140px;
+
+  transform-origin: bottom center;
+
+  filter:
+    drop-shadow(0 15px 20px rgba(0, 0, 0, 0.45));
+
+  transition: transform 0.3s ease;
+}
+
+
+/* Image */
+
+.real-dhaki img {
+  width: 100%;
+ /* padding-bottom: 20px; */
+  display: block;
+
+  object-fit: contain;
+}
+
+
+/* =================================
+   PLAYING MOVEMENT
+================================= */
+
+.dhaki-playing {
+  animation:
+    dhakiBody 0.5s ease-in-out infinite;
+}
+
+
+@keyframes dhakiBody {
+
+  0% {
+    transform: rotate(0deg)
+               translateY(0);
+  }
+
+  25% {
+    transform: rotate(-1.2deg)
+               translateY(-3px);
+  }
+
+  50% {
+    transform: rotate(0.8deg)
+               translateY(0);
+  }
+
+  75% {
+    transform: rotate(-0.8deg)
+               translateY(-2px);
+  }
+
+  100% {
+    transform: rotate(0deg)
+               translateY(0);
+  }
+}
+
+
+/* =================================
+   GLOW UNDER DHAKI
+================================= */
+
+.dhaki-glow {
+  position: absolute;
+
+  bottom: -10px;
+  right: 20px;
+
+  width: 130px;
+  height: 30px;
+
+  background: rgba(255, 180, 60, 0.22);
+
+  border-radius: 50%;
+
+  filter: blur(15px);
+
+  animation: dhakiGlow 1.2s ease-in-out infinite;
+}
+
+
+@keyframes dhakiGlow {
+
+  0%,
+  100% {
+    transform: scaleX(0.85);
+
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleX(1.1);
+
+    opacity: 0.8;
+  }
+}
+
+
+/* =================================
+   CONTROL BUTTON
+================================= */
+
+.dhaki-control {
+  pointer-events: auto;
+
+  position: absolute;
+
+  right: 110px;
+  bottom: 20px;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 210, 120, 0.4);
+
+  background: rgba(30, 10, 10, 0.75);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.dhaki-control:hover {
+  transform: scale(1.1);
+
+  background: rgba(100, 30, 20, 0.85);
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .real-dhaki-container {
+    width: 120px;
+    height: 190px;
+
+    right: 8px;
+  }
+
+  .real-dhaki {
+    width: 120px;
+  }
+
+  .dhaki-control {
+    right: 90px;
+    bottom: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 15px;
+  }
+
+}
