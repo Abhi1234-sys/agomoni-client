@@ -3,9 +3,7 @@
 );
 
 
-/* =========================================
-   GLOBAL
-========================================= */
+
 
 * {
   margin: 0;
@@ -52,9 +50,7 @@ button {
 }
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
+
 
 .background-overlay {
   position: fixed;
@@ -82,9 +78,7 @@ button {
 }
 
 
-/* =========================================
-   NAVBAR
-========================================= */
+
 
 .navbar {
   position: fixed;
@@ -105,14 +99,7 @@ button {
   justify-content: space-between;
 
   z-index: 100;
-/* 
-  background:
-    rgba(10, 3, 5, 0.35);
 
-  backdrop-filter: blur(12px); */
-
-  /* border-bottom:
-    1px solid rgba(255,255,255,0.08); */
 }
 .photodurga-ma{
   height: 100px;
@@ -209,10 +196,46 @@ button {
   transform: translateX(-50%);
 
   transition: 0.3s;
-} */
-/* =========================================
-   NAVIGATION LINKS
-========================================= */
+} 
+  
+.mobile-dots-btn {
+  display: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .mobile-dots-btn {
+    display: block !important;
+  }
+
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+    flex-direction: column;
+    background: rgba(20, 5, 8, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 196, 46, 0.3);
+    border-radius: 14px;
+    padding: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 200px;
+    z-index: 999;
+  }
+
+  
+  .nav-links.mobile-menu-open {
+    display: flex !important;
+  }
+
+  .nav-links .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 
 .nav-links {
   display: flex;
@@ -223,7 +246,7 @@ button {
 }
 
 
-/* Individual navigation box */
+
 
 .nav-link {
   position: relative;
@@ -236,7 +259,7 @@ button {
 
   min-height: 40px;
 
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.96);
 
   text-decoration: none;
 
@@ -244,25 +267,23 @@ button {
 
   font-size: 13px;
 
-  font-weight: 500;
+  font-weight: 600;
 
   letter-spacing: 0.8px;
 
-  border: 1px solid rgba(255,196,46,0.22);
+  border: 1px solid rgba(255,196,46,0.55);
 
   border-radius: 10px;
 
-  /*
-    Dark transparent background makes
-    text visible over the image
-  */
   background:
-    rgba(20, 5, 8, 0.55);
+    linear-gradient(135deg, rgba(45,8,15,0.88), rgba(20,5,8,0.72));
 
   backdrop-filter: blur(10px);
 
   box-shadow:
-    0 5px 20px rgba(0,0,0,0.25);
+    0 5px 20px rgba(0,0,0,0.35),
+    0 0 12px rgba(255,196,46,0.08),
+    inset 0 0 12px rgba(255,196,46,0.035);
 
   transition:
     transform 0.3s ease,
@@ -273,9 +294,7 @@ button {
 }
 
 
-/* =========================================
-   HOVER
-========================================= */
+
 
 .nav-link:hover {
 
@@ -296,9 +315,7 @@ button {
 }
 
 
-/* =========================================
-   ACTIVE PAGE
-========================================= */
+
 
 .nav-link.active {
 
@@ -320,34 +337,14 @@ button {
 }
 
 
-/* Small golden line under active option */
+
 
 .nav-link.active::after {
-
-  content: "";
-
-  position: absolute;
-
-  left: 20%;
-
-  right: 20%;
-
-  bottom: 4px;
-
-  height: 2px;
-
-  border-radius: 5px;
-
-  background: #ffc42e;
-
-  box-shadow:
-    0 0 8px rgba(255,196,46,0.7);
+  content: none !important;
+  display: none !important;
 }
 
-/* .nav-link.active::after,
-.nav-link:hover::after {
-  width: 100%;
-} */
+
 
 
 .journey-link {
@@ -355,9 +352,7 @@ button {
 }
 
 
-/* =========================================
-   HOME
-========================================= */
+
 
 .home-page {
   min-height: 100vh;
@@ -377,9 +372,13 @@ button {
   padding:
     130px 20px 80px;
 }
-/* =========================================
-   BLURRED PUJA BACKGROUND SLIDESHOW
-========================================= */
+
+.home-page > .hero-content {
+  margin-left: auto;
+  margin-right: auto;
+  align-self: center;
+}
+
 
 .home-background-slideshow {
   position: absolute;
@@ -393,6 +392,8 @@ button {
 
   z-index: -1;
 }
+
+
 
 
 /* Individual background images */
@@ -487,6 +488,16 @@ button {
 
   max-width: 100%;
 
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
   animation:
     heroAppear 1.2s ease;
 }
@@ -560,9 +571,6 @@ button {
 }
 
 
-/* =========================================
-   DIVIDER
-========================================= */
 
 .gold-divider {
   display: flex;
@@ -596,9 +604,7 @@ button {
 }
 
 
-/* =========================================
-   COUNTDOWN
-========================================= */
+
 
 /* .countdown-title {
   font-size: 26px;
@@ -686,9 +692,7 @@ button {
 
   font-size: 13px;
 } */
- /* =========================================
-   PREMIUM DURGA PUJA COUNTDOWN
-========================================= */
+ 
 
 /* .countdown-title {
   font-family: "Playfair Display", serif;
@@ -704,7 +708,7 @@ button {
 }
 
 
-/* COUNTDOWN CONTAINER */
+
 
 .countdown {
   display: flex;
@@ -719,7 +723,7 @@ button {
 }
 
 
-/* INDIVIDUAL CARD */
+
 
 .time-card {
   position: relative;
@@ -734,7 +738,7 @@ button {
 
   border-radius: 18px;
 
-  /* Glass effect */
+  
   background:
     linear-gradient(
       145deg,
@@ -759,7 +763,7 @@ button {
 }
 
 
-/* GOLDEN LIGHT AT TOP */
+
 
 .time-card::before {
   content: "";
@@ -786,7 +790,7 @@ button {
 }
 
 
-/* SOFT GLOW */
+
 
 .time-card::after {
   content: "";
@@ -809,7 +813,7 @@ button {
 }
 
 
-/* NUMBER */
+
 
 .time-card strong {
   position: relative;
@@ -836,7 +840,7 @@ button {
 }
 
 
-/* LABEL */
+
 
 .time-card span {
   margin-top: 13px;
@@ -854,7 +858,7 @@ button {
 }
 
 
-/* HOVER */
+
 
 .time-card:hover {
   transform:
@@ -872,7 +876,7 @@ button {
 }
 
 
-/* NUMBER GLOW */
+
 
 @keyframes countdownGlow {
 
@@ -890,20 +894,14 @@ button {
 }
 
 
-/* =========================================
-   DECORATIVE SEPARATORS
-========================================= */
 
-/* Add small glowing dots between cards */
 
 .time-card:not(:last-child)::marker {
   display: none;
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+
 
 @media (max-width: 600px) {
 
@@ -935,7 +933,7 @@ button {
 }
 
 
-/* VERY SMALL SCREEN */
+
 
 @media (max-width: 380px) {
 
@@ -956,9 +954,7 @@ button {
     font-size: 8px;
   }
 } */
-/* =========================================
-   PREMIUM DURGA PUJA COUNTDOWN
-========================================= */
+
 
 /* .countdown-title {
   font-family: "Playfair Display", serif;
@@ -989,7 +985,7 @@ button {
 }
 
 
-/* INDIVIDUAL CARD */
+
 
 .time-card {
   position: relative;
@@ -1004,7 +1000,7 @@ button {
 
   border-radius: 18px;
 
-  /* Glass effect */
+  
   background:
     linear-gradient(
       145deg,
@@ -1029,7 +1025,7 @@ button {
 }
 
 
-/* GOLDEN LIGHT AT TOP */
+
 
 .time-card::before {
   content: "";
@@ -1056,7 +1052,7 @@ button {
 }
 
 
-/* SOFT GLOW */
+
 
 .time-card::after {
   content: "";
@@ -1079,7 +1075,7 @@ button {
 }
 
 
-/* NUMBER */
+
 
 .time-card strong {
   position: relative;
@@ -1106,7 +1102,7 @@ button {
 }
 
 
-/* LABEL */
+
 
 .time-card span {
   margin-top: 13px;
@@ -1124,7 +1120,7 @@ button {
 }
 
 
-/* HOVER */
+
 
 .time-card:hover {
   transform:
@@ -1142,7 +1138,7 @@ button {
 }
 
 
-/* NUMBER GLOW */
+
 
 @keyframes countdownGlow {
 
@@ -1160,20 +1156,14 @@ button {
 }
 
 
-/* =========================================
-   DECORATIVE SEPARATORS
-========================================= */
 
-/* Add small glowing dots between cards */
 
 .time-card:not(:last-child)::marker {
   display: none;
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+
 
 @media (max-width: 600px) {
 
@@ -1205,7 +1195,7 @@ button {
 }
 
 
-/* VERY SMALL SCREEN */
+
 
 @media (max-width: 380px) {
 
@@ -1226,9 +1216,7 @@ button {
     font-size: 8px;
   }
 } */
-/* =====================================================
-   ROYAL DURGA PUJA COUNTDOWN
-===================================================== */
+
 
 .royal-countdown {
   position: relative;
@@ -1241,9 +1229,7 @@ button {
 }
 
 
-/* =====================================================
-   HEADING
-===================================================== */
+
 
 .countdown-heading {
   display: flex;
@@ -1302,9 +1288,6 @@ button {
 }
 
 
-/* =====================================================
-   CENTRAL MANDALA
-===================================================== */
 
 .countdown-mandala {
 
@@ -1322,7 +1305,7 @@ button {
 }
 
 
-/* Rotating rings */
+
 
 .mandala-ring {
 
@@ -1385,9 +1368,7 @@ button {
 }
 
 
-/* =====================================================
-   CENTER
-===================================================== */
+
 
 .countdown-center {
 
@@ -1453,9 +1434,7 @@ button {
 }
 
 
-/* =====================================================
-   TIME
-===================================================== */
+
 
 .royal-time {
 
@@ -1470,7 +1449,7 @@ button {
 }
 
 
-/* Individual number */
+
 
 .royal-time-unit {
 
@@ -1523,9 +1502,7 @@ button {
 }
 
 
-/* =====================================================
-   GOLDEN SEPARATORS
-===================================================== */
+
 
 .royal-separator {
 
@@ -1543,9 +1520,7 @@ button {
 }
 
 
-/* =====================================================
-   BOTTOM ORNAMENT
-===================================================== */
+
 
 .countdown-ornament {
 
@@ -1590,9 +1565,7 @@ button {
 }
 
 
-/* =====================================================
-   ANIMATIONS
-===================================================== */
+
 
 @keyframes rotateClockwise {
 
@@ -1683,9 +1656,7 @@ button {
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+
 
 @media (max-width: 650px) {
 
@@ -1804,9 +1775,7 @@ button {
 }
 
 
-/* =========================================
-   JOURNEY BUTTON
-========================================= */
+
 
 .journey-button {
   margin:
@@ -1872,9 +1841,7 @@ button {
 }
 
 
-/* =========================================
-   PLAY BUTTON
-========================================= */
+
 
 .play-button {
   margin-top: 15px;
@@ -1907,9 +1874,7 @@ button {
 }
 
 
-/* =========================================
-   JOURNEY PAGE
-========================================= */
+
 
 .journey-page {
   min-height: 100vh;
@@ -2009,9 +1974,7 @@ button {
 }
 
 
-/* =========================================
-   JOURNEY CARDS
-========================================= */
+
 
 .journey-grid {
   display: grid;
@@ -2112,9 +2075,7 @@ button {
   background: #9d2028;
   color: white;
 
-  /* transform: translateY(-3px); */
 
-  /* box-shadow: 0 8px 20px rgba(255, 77, 77, 0.25); */
 }
 
 .journey-card:hover {
@@ -2210,9 +2171,7 @@ button {
   transition: 0.3s;
 }
 }
-/* =========================================
-   BACK HOME
-========================================= */
+
 
 .back-home {
   display: inline-block;
@@ -2236,9 +2195,7 @@ button {
 }
 
 
-/* =========================================
-   DHAKI
-========================================= */
+
 
 .dhaki-container {
   position: fixed;
@@ -2492,9 +2449,7 @@ button {
 }
 
 
-/* =========================================
-   DHAKI ANIMATION
-========================================= */
+
 
 .dhaki-playing .dhaki {
   animation:
@@ -2561,9 +2516,7 @@ button {
 }
 
 
-/* =========================================
-   SOUND WAVES
-========================================= */
+
 
 .sound-waves {
   position: absolute;
@@ -2623,9 +2576,7 @@ button {
 }
 
 
-/* =========================================
-   DHAKI BUTTON
-========================================= */
+
 
 .dhaki-control {
   position: absolute;
@@ -2654,9 +2605,63 @@ button {
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+.dhaki-control {
+  position: absolute;
+
+  bottom: 0;
+
+  right: 0;
+
+  width: 35px;
+
+  height: 35px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid #ffc42e;
+
+  background:
+    rgba(50,5,10,0.8);
+
+  color: white;
+
+  cursor: pointer;
+
+  z-index: 5;
+}
+
+.emergency-nav-btn {
+  color: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(20, 5, 8, 0.55) !important;
+  border: 1px solid rgba(255, 196, 46, 0.22) !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.emergency-nav-btn:hover {
+  color: #ffc42e !important;
+  background: rgba(60, 10, 18, 0.78) !important;
+  border-color: rgba(255, 196, 46, 0.65) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 18px rgba(255,196,46,0.12) !important;
+}
+
+.emergency-nav-btn.active {
+  color: #ffc42e !important;
+  background: linear-gradient(135deg, rgba(100, 15, 25, 0.8), rgba(35, 5, 10, 0.75)) !important;
+  border-color: #ffc42e !important;
+  box-shadow: 0 0 15px rgba(255, 196, 46, 0.15), inset 0 0 15px rgba(255, 196, 46, 0.04) !important;
+}
+
+
+
+
+
+
+  
+
+
+
 
 @media (max-width: 900px) {
 
@@ -2811,3 +2816,575 @@ button {
   }
 
 }
+
+.mobile-dots-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-dots-btn {
+    display: block !important;
+    cursor: pointer;
+    font-size: 28px;
+    color: #ffc42e;
+    padding: 2px 10px;
+    user-select: none;
+  }
+
+ 
+  .nav-links {
+    display: none !important;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+    flex-direction: column !important;
+    background: rgba(20, 5, 8, 0.96);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 196, 46, 0.35);
+    border-radius: 14px;
+    padding: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    width: 210px;
+    z-index: 999;
+    gap: 10px !important;
+    overflow-x: visible !important;
+  }
+
+  
+  .nav-links.mobile-menu-open {
+    display: flex !important;
+  }
+
+  .nav-links .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+.bankura-carnival-section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.carnival-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(145deg, rgba(25, 9, 15, 0.85), rgba(12, 4, 7, 0.9));
+  border: 1px solid rgba(255, 211, 106, 0.35);
+  border-radius: 28px;
+  padding: 45px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.carnival-small-tag {
+  color: #ffd36a;
+  font-family: "Cinzel", serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.carnival-text-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3.5vw, 40px);
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.carnival-text-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15.5px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Video Styling */
+.carnival-video-wrapper {
+  width: 100%;
+  height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 211, 106, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.carnival-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 900px) {
+  .carnival-container {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .carnival-video-wrapper {
+    height: 240px;
+  }
+}
+.carnival-text-content p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin-bottom: 16px; 
+  text-align: left;
+}
+
+.carnival-text-content p strong {
+  color: #ffd36a; 
+}
+
+/* =========================================================
+   FINAL DESKTOP NAVIGATION POLISH
+   Keeps the existing Durga Puja gold / maroon theme.
+   ========================================================= */
+@media (min-width: 769px) {
+  .navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-left: auto;
+    padding: 6px;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 16px;
+    white-space: nowrap;
+
+    color: rgba(255, 255, 255, 0.96);
+    background: linear-gradient(
+      135deg,
+      rgba(55, 10, 18, 0.90),
+      rgba(22, 5, 9, 0.82)
+    );
+
+    border: 1px solid rgba(255, 196, 46, 0.52);
+    border-radius: 9px;
+
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.32),
+      0 0 10px rgba(255, 196, 46, 0.07),
+      inset 0 0 10px rgba(255, 196, 46, 0.025);
+
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+
+    transition:
+      color 0.25s ease,
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: #ffc42e;
+    background: linear-gradient(
+      135deg,
+      rgba(90, 16, 25, 0.96),
+      rgba(35, 7, 12, 0.92)
+    );
+    border-color: #ffc42e;
+    transform: translateY(-2px);
+    box-shadow:
+      0 7px 18px rgba(0, 0, 0, 0.38),
+      0 0 16px rgba(255, 196, 46, 0.18),
+      inset 0 0 10px rgba(255, 196, 46, 0.045);
+  }
+
+  .nav-link.active {
+    color: #ffc42e;
+    background: linear-gradient(
+      135deg,
+      rgba(105, 18, 28, 0.96),
+      rgba(38, 7, 12, 0.92)
+    );
+    border-color: #ffc42e;
+    box-shadow:
+      0 0 15px rgba(255, 196, 46, 0.16),
+      inset 0 0 14px rgba(255, 196, 46, 0.045);
+  }
+
+  .emergency-nav-btn {
+    color: #fff7dc !important;
+    background: linear-gradient(
+      135deg,
+      rgba(91, 15, 25, 0.96),
+      rgba(38, 6, 12, 0.94)
+    ) !important;
+    border: 1px solid rgba(255, 196, 46, 0.72) !important;
+    box-shadow:
+      0 4px 15px rgba(0, 0, 0, 0.35),
+      0 0 12px rgba(255, 196, 46, 0.10),
+      inset 0 0 10px rgba(255, 196, 46, 0.035) !important;
+  }
+
+  .emergency-nav-btn:hover {
+    color: #ffc42e !important;
+    background: linear-gradient(
+      135deg,
+      rgba(125, 20, 31, 0.98),
+      rgba(48, 7, 13, 0.96)
+    ) !important;
+    border-color: #ffc42e !important;
+    transform: translateY(-2px) !important;
+    box-shadow:
+      0 7px 20px rgba(0, 0, 0, 0.42),
+      0 0 20px rgba(255, 196, 46, 0.20) !important;
+  }
+
+  .emergency-nav-btn.active {
+    color: #ffc42e !important;
+    border-color: #ffc42e !important;
+    box-shadow:
+      0 0 18px rgba(255, 196, 46, 0.20),
+      inset 0 0 14px rgba(255, 196, 46, 0.05) !important;
+  }
+}
+
+
+
+/* =========================================================
+   FINAL HOME PAGE VISIBILITY + NAVIGATION POLISH
+   Requested changes only:
+   - remove navigation underlines
+   - improve desktop/mobile navigation visibility and spacing
+   - make the hero content stand out from the background
+   - keep the existing gold / maroon Durga Puja palette
+   ========================================================= */
+
+/* Remove every possible navigation underline */
+.nav-link,
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active,
+.nav-link.active {
+  text-decoration: none !important;
+}
+
+.nav-link::after,
+.nav-link.active::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Desktop navigation */
+@media (min-width: 769px) {
+  .navbar {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-left: auto;
+    padding: 7px;
+    flex-shrink: 0;
+  }
+
+  .nav-link {
+    min-width: 82px;
+    min-height: 42px;
+    padding: 9px 17px;
+    white-space: nowrap;
+
+    color: #fff8e8 !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(67, 10, 20, 0.96),
+        rgba(25, 5, 10, 0.94)
+      ) !important;
+
+    border: 1px solid rgba(255, 196, 46, 0.68) !important;
+    border-radius: 9px;
+
+    text-shadow: 0 1px 7px rgba(0, 0, 0, 0.85);
+
+    box-shadow:
+      0 5px 16px rgba(0, 0, 0, 0.42),
+      0 0 12px rgba(255, 196, 46, 0.10),
+      inset 0 0 12px rgba(255, 196, 46, 0.045);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: #ffc42e !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(112, 20, 32, 0.98),
+        rgba(42, 7, 13, 0.96)
+      ) !important;
+    border-color: #ffc42e !important;
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.46),
+      0 0 22px rgba(255, 196, 46, 0.22),
+      inset 0 0 14px rgba(255, 196, 46, 0.055);
+  }
+
+  .nav-link.active {
+    color: #ffc42e !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(125, 22, 34, 0.98),
+        rgba(48, 7, 14, 0.96)
+      ) !important;
+    border-color: #ffc42e !important;
+    box-shadow:
+      0 0 20px rgba(255, 196, 46, 0.20),
+      inset 0 0 16px rgba(255, 196, 46, 0.055);
+  }
+
+  .emergency-nav-btn {
+    min-width: 96px;
+    color: #fff8e8 !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(103, 14, 27, 0.98),
+        rgba(39, 6, 12, 0.96)
+      ) !important;
+    border-color: rgba(255, 196, 46, 0.82) !important;
+    box-shadow:
+      0 5px 17px rgba(0, 0, 0, 0.42),
+      0 0 16px rgba(255, 196, 46, 0.13),
+      inset 0 0 13px rgba(255, 196, 46, 0.045) !important;
+  }
+}
+
+/* Mobile navigation dropdown */
+@media (max-width: 768px) {
+  .mobile-dots-btn {
+    display: block !important;
+    color: #ffc42e !important;
+    text-shadow: 0 0 12px rgba(255, 196, 46, 0.45);
+  }
+
+  .nav-links {
+    display: none !important;
+    position: absolute;
+    top: 75px;
+    right: 15px;
+
+    width: 260px;
+    padding: 14px;
+    gap: 9px !important;
+
+    flex-direction: column !important;
+    align-items: stretch !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(39, 6, 12, 0.98),
+        rgba(13, 3, 7, 0.98)
+      ) !important;
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 196, 46, 0.68) !important;
+    border-radius: 16px;
+
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.72),
+      0 0 25px rgba(255, 196, 46, 0.11),
+      inset 0 0 18px rgba(255, 196, 46, 0.035);
+
+    z-index: 999;
+  }
+
+  .nav-links.mobile-menu-open {
+    display: flex !important;
+  }
+
+  .nav-links .nav-link {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 14px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff8e8 !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(66, 10, 19, 0.96),
+        rgba(24, 5, 10, 0.94)
+      ) !important;
+
+    border: 1px solid rgba(255, 196, 46, 0.58) !important;
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: 0 1px 7px rgba(0, 0, 0, 0.9);
+
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.35),
+      inset 0 0 10px rgba(255, 196, 46, 0.025);
+  }
+
+  .nav-links .nav-link:hover,
+  .nav-links .nav-link:focus-visible {
+    color: #ffc42e !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(112, 20, 32, 0.98),
+        rgba(42, 7, 13, 0.96)
+      ) !important;
+    border-color: #ffc42e !important;
+    transform: translateX(-2px);
+    box-shadow:
+      0 5px 16px rgba(0, 0, 0, 0.42),
+      0 0 18px rgba(255, 196, 46, 0.18);
+  }
+
+  .nav-links .nav-link.active {
+    color: #ffc42e !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(125, 22, 34, 0.98),
+        rgba(48, 7, 14, 0.96)
+      ) !important;
+    border-color: #ffc42e !important;
+    box-shadow:
+      0 0 18px rgba(255, 196, 46, 0.18),
+      inset 0 0 13px rgba(255, 196, 46, 0.045);
+  }
+
+  .nav-links .emergency-nav-btn {
+    color: #fff8e8 !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(103, 14, 27, 0.98),
+        rgba(39, 6, 12, 0.96)
+      ) !important;
+    border-color: rgba(255, 196, 46, 0.82) !important;
+  }
+}
+
+/* Extra-small phones: keep the dropdown comfortably inside the screen */
+@media (max-width: 400px) {
+  .nav-links {
+    right: 10px;
+    width: min(250px, calc(100vw - 20px));
+  }
+}
+
+/* Main hero content visibility — same gold/maroon palette, no layout changes */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  isolation: isolate;
+}
+
+.hero-content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -25px;
+  left: 50%;
+  width: min(820px, 96vw);
+  height: calc(100% + 50px);
+  transform: translateX(-50%);
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(58, 8, 16, 0.48) 0%,
+      rgba(35, 6, 12, 0.28) 45%,
+      rgba(10, 2, 4, 0) 78%
+    );
+
+  filter: blur(7px);
+}
+
+.hero-title {
+  color: #fff4d2;
+  text-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.90),
+    0 0 28px rgba(255, 196, 46, 0.12),
+    0 0 55px rgba(89, 10, 20, 0.22);
+}
+
+.hero-title span {
+  color: #ffc42e;
+  text-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.90),
+    0 0 25px rgba(255, 196, 46, 0.24),
+    0 0 50px rgba(255, 196, 46, 0.10);
+}
+
+.welcome-text,
+.bengali,
+.hero-subtitle,
+.smallpara-homepage {
+  text-shadow:
+    0 2px 9px rgba(0, 0, 0, 0.92),
+    0 0 18px rgba(255, 196, 46, 0.12);
+}
+
+.smallpara-homepage {
+  color: #ffc42e;
+}
+
+.bengali {
+  color: #ffd05a;
+}
+
+.hero-subtitle {
+  color: #fff1cf;
+}
+
+.countdown-heading,
+.countdown-heading small,
+.countdown-heading h2,
+.countdown-title {
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.92),
+    0 0 20px rgba(255, 196, 46, 0.14);
+}
+      

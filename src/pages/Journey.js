@@ -1,29 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 function Journey() {
-
   return (
-
     <main className="journey-page">
-
-
       <div className="journey-content">
-
-
         <p className="journey-small-title">
           ✦ YOUR PUJA ADVENTURE ✦
         </p>
 
-
         <h1>
           Start Your
-          <span>
-            Journey
-          </span>
+          <span> Journey</span>
         </h1>
-
 
         <p className="journey-description">
           Explore the city, discover beautiful pandals,
@@ -31,122 +20,74 @@ function Journey() {
           like never before.
         </p>
 
-
         {/* OPTIONS */}
-
         <div className="journey-grid">
 
-
           {/* PARKING */}
-
           <div className="journey-card">
-
             <div className="card-icon">
               🚗
             </div>
-
-            <h2>
-              Nearby Parking
-            </h2>
-
+            <h2>Nearby Parking</h2>
             <p>
               Find parking spaces near your location.
             </p>
-
-            <button>
+            <Link to="/nearby-parking" className="explore-button">
               Explore
-            </button>
-
+            </Link>
           </div>
 
-
           {/* RESTAURANT */}
-
           <div className="journey-card">
-
             <div className="card-icon">
               🍽️
             </div>
-
-            <h2>
-              Nearby Restaurants
-            </h2>
-
+            <h2>Nearby Restaurants</h2>
             <p>
               Discover restaurants and food places nearby.
             </p>
-
-            <button>
+            <Link to="/nearby-restaurants" className="explore-button">
               Explore
-            </button>
-
+            </Link>
           </div>
 
-
           {/* TOILET */}
-
           <div className="journey-card">
-
             <div className="card-icon">
               🚻
             </div>
-
-            <h2>
-              Public Toilets
-            </h2>
-
+            <h2>Public Toilets</h2>
             <p>
               Find nearby public toilet facilities.
             </p>
-
-            <button>
+            <Link to="/public-toilets" className="explore-button">
               Explore
-            </button>
-
+            </Link>
           </div>
 
-
-          {/* PANDAL */}
-
+          {/* PANDAL EXPLORER */}
           <div className="journey-card">
-
-                <div className="card-icon">
-                  🛕
-                </div>
-
-                <h2>
-                  Pandal Explorer
-                </h2>
-
-                <p>
-                  Discover famous Durga Puja pandals.
-                </p>
-
-                <Link to="/pandal-explorer" className="explore-button">
-  Explore
-</Link>
-
-</div>
+            <div className="card-icon">
+              🛕
+            </div>
+            <h2>Pandal Explorer</h2>
+            <p>
+              Discover famous Durga Puja pandals.
+            </p>
+            <Link to="/pandal-explorer" className="explore-button">
+              Explore
+            </Link>
+          </div>
 
         </div>
 
-
         {/* BACK */}
-
-        <Link
-          to="/"
-          className="back-home"
-        >
+        <Link to="/" className="back-home">
           ← Back to Home
         </Link>
-
-
       </div>
-
     </main>
-
   );
 }
-
 
 export default Journey;

@@ -12,6 +12,14 @@ function Home({
 
     <main className="home-page">
 
+      {/* ব্যাকগ্রাউন্ড স্লাইডশো ডিভ (এটি মিসিং ছিল, তাই ব্যাকগ্রাউন্ডে ছবি আসছিল না) */}
+      <div className="home-background-slideshow">
+        <div className="home-bg bg1"></div>
+        <div className="home-bg bg2"></div>
+        <div className="home-bg bg3"></div>
+        <div className="home-bg bg4"></div>
+      </div>
+
       <div className="hero-content">
 
 
@@ -145,6 +153,8 @@ function Home({
           </span>
 
         </Link>
+        
+        
 
 
         {/* SMALL DHAK BUTTON */}
