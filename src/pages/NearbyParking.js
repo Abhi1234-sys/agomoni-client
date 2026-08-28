@@ -11,7 +11,7 @@ function NearbyParking() {
   useEffect(() => {
     const fetchParkingsFromPujas = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/pujas");
+        const response = await fetch("https://agomoni-backend.onrender.com/api/pujas");
         const data = await response.json();
         
         let pujaList = Array.isArray(data) ? data : (data.data || data.pujas || []);
