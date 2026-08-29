@@ -5,7 +5,7 @@ ABOUT PAGE
 /* ABOUT PAGE */
 
 
-.about-page {
+/* .about-page {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -29,6 +29,28 @@ ABOUT PAGE
     rgba(255, 196, 46, 0.05) 0%,
     rgba(0, 0, 0, 0.45) 80%
   );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 0;
+} */
+
+.about-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  padding: 110px 5% 80px;
+}
+
+.about-background {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 196, 46, 0.05) 0%, rgba(0, 0, 0, 0.45) 80%);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   pointer-events: none;
