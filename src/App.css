@@ -34,7 +34,7 @@ button {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  background-image: url("./home-bg/main-background.jpg");
+  background-image: url("");
 }
 
 .background-overlay {
