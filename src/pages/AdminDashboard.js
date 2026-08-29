@@ -87,10 +87,10 @@ const AdminDashboard = () => {
   const fetchAllData = async () => {
     try {
       const [resPujas, resRest, resPark, resToil] = await Promise.all([
-        fetch('https://agomoni-backend.onrender.com/api/pujas').then((r) => r.json()),
-        fetch('https://agomoni-backend.onrender.com/api/utilities/restaurants').then((r) => r.json()),
-        fetch('https://agomoni-backend.onrender.com/api/utilities/parkings').then((r) => r.json()),
-        fetch('https://agomoni-backend.onrender.com/api/utilities/toilets').then((r) => r.json()),
+        fetch('http://localhost:5000/api/pujas').then((r) => r.json()),
+        fetch('http://localhost:5000/api/utilities/restaurants').then((r) => r.json()),
+        fetch('http://localhost:5000/api/utilities/parkings').then((r) => r.json()),
+        fetch('http://localhost:5000/api/utilities/toilets').then((r) => r.json()),
       ]);
 
       setPujas(Array.isArray(resPujas) ? resPujas : []);
@@ -211,8 +211,8 @@ const AdminDashboard = () => {
     try {
       const url =
         activeTab === 'pujas'
-          ? `https://agomoni-backend.onrender.com/api/pujas/${id}`
-          : `https://agomoni-backend.onrender.com/api/utilities/${activeTab}/${id}`;
+          ? `http://localhost:5000/api/pujas/${id}`
+          : `http://localhost:5000/api/utilities/${activeTab}/${id}`;
 
       const res = await fetch(url, { method: 'DELETE' });
 
@@ -254,8 +254,8 @@ const AdminDashboard = () => {
 
     if (activeTab === 'pujas') {
       url = editingId
-        ? `https://agomoni-backend.onrender.com/api/pujas/${editingId}`
-        : 'https://agomoni-backend.onrender.com/api/pujas';
+        ? `http://localhost:5000/api/pujas/${editingId}`
+        : 'http://localhost:5000/api/pujas';
 
       payload = {
         ...pujaData,
@@ -265,8 +265,8 @@ const AdminDashboard = () => {
       };
     } else {
       url = editingId
-        ? `https://agomoni-backend.onrender.com/api/utilities/${activeTab}/${editingId}`
-        : `https://agomoni-backend.onrender.com/api/utilities/${activeTab}`;
+        ? `http://localhost:5000/api/utilities/${activeTab}/${editingId}`
+        : `http://localhost:5000/api/utilities/${activeTab}`;
 
       if (activeTab === 'restaurants') payload = restaurantData;
       if (activeTab === 'parkings') payload = parkingData;
