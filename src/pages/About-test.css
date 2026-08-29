@@ -4,19 +4,13 @@ ABOUT PAGE
 
 /* ABOUT PAGE */
 
+
 .about-page {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
   
- background:
-    linear-gradient(
-      180deg,
-      rgba(16, 6, 9, 0.72) 0%,
-      rgba(35, 8, 14, 0.65) 50%,
-      rgba(16, 6, 9, 0.78) 100%
-    ),
-    url("/Gallery/about-bg.jpeg");
+ 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

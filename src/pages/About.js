@@ -1,14 +1,18 @@
 import React from "react";
-import "./About.css";
+import "./About-test.css";
+import aboutBg from "../assets/about-bg.jpeg";
 
 function About() {
   return (
-    <main className="about-page">
+    <main
+      className="about-page"
+      style={{ backgroundImage: `url(${aboutBg})` }}
+    >
       {/* BG Blur*/}
       <div className="about-background"></div>
 
       <div className="about-content">
-        {/*  HERO  */}
+        {/* HERO */}
         <section className="about-hero">
           <p className="about-eyebrow">✦ DURGA PUJA 2K26 ✦</p>
 
