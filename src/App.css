@@ -3074,3 +3074,50 @@ body {
   object-fit: contain;
   display: block;
 }
+
+.mobile-dots-btn {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .mobile-dots-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: rgba(243, 156, 18, 0.12);
+    border: 1px solid rgba(243, 156, 18, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  
+  .mobile-dots-btn .bar {
+    width: 100%;
+    height: 2.5px;
+    background-color: #f39c12;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(243, 156, 18, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-dots-btn .bar:nth-child(2) {
+    width: 65%;
+    align-self: flex-end;
+  }
+
+  .mobile-dots-btn:active {
+    transform: scale(0.92);
+    background: rgba(243, 156, 18, 0.25);
+  }
+}
+

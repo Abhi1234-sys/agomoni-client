@@ -22,11 +22,13 @@ function Navbar() {
 
   {/* 3-DOT MENU BUTTON (Only for Mobile) */}
   <div 
-    className="mobile-dots-btn" 
-    onClick={() => setIsOpen(!isOpen)}
-  >
-    ⋮
-  </div>
+  className="mobile-dots-btn" 
+  onClick={() => setIsOpen(!isOpen)}
+>
+  <span className="bar"></span>
+  <span className="bar"></span>
+  <span className="bar"></span>
+</div>
 
       {/* NAVIGATION */}
       <div className={`nav-links ${isOpen ? "mobile-menu-open" : ""}`}>
