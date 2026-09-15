@@ -1,20 +1,106 @@
 import React, { useState, useEffect } from "react";
 import "./PandalExplorer.css";
+import WeatherCard from "../components/WeatherCard";
+
+// 🌤️ Unique Live Weather Component inside Puja Details Modal
+function PandalModalWeather({ lat, lon, locationName }) {
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchWeather = async () => {
+      setLoading(true);
+      try {
+        // Default Bankura Coordinates if specific coordinates are absent
+        const targetLat = lat || 23.2324;
+        const targetLon = lon || 87.0718;
+
+        const res = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${targetLat}&longitude=${targetLon}&current_weather=true`
+        );
+        const data = await res.json();
+
+        if (isMounted && data && data.current_weather) {
+          setWeather(data.current_weather);
+        }
+      } catch (err) {
+        console.error("Error fetching modal weather:", err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    fetchWeather();
+    return () => {
+      isMounted = false;
+    };
+  }, [lat, lon]);
+
+  if (loading) {
+    return (
+      <div className="modal-weather-skeleton">
+        <span>🌤️ মণ্ডপ এলাকার আবহাওয়া লোড হচ্ছে...</span>
+      </div>
+    );
+  }
+
+  if (!weather) return null;
+
+  const getWeatherDetails = (code) => {
+    if (code === 0) {
+      return { icon: "☀️", text: "পরিষ্কার আকাশ", advice: "প্যান্ডেল ঘোরার দারুণ সময়! 🎯", bg: "sunny" };
+    } else if ([1, 2, 3].includes(code)) {
+      return { icon: "🌤️", text: "আংশিক মেঘলা", advice: "মনোরম আবহাওয়া, ঠাকুর দেখার সেরা সময়! ✨", bg: "cloudy" };
+    } else if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) {
+      return { icon: "🌧️", text: "বৃষ্টির সম্ভাবনা", advice: "সাথে ছাতা রাখুন! ☔", bg: "rainy" };
+    } else if ([95, 96, 99].includes(code)) {
+      return { icon: "⛈️", text: "ঝড়-বৃষ্টির সম্ভাবনা", advice: "সতর্ক থাকুন ও নিরাপদ স্থানে থাকুন! ⚡", bg: "storm" };
+    }
+    return { icon: "🌡️", text: "সাধারণ আবহাওয়া", advice: "পুজো উপভোগ করুন! 🎉", bg: "normal" };
+  };
+
+  const info = getWeatherDetails(weather.weathercode);
+
+  return (
+    <div className={`modal-weather-badge ${info.bg}`}>
+      <div className="weather-badge-top">
+        <span className="live-pill">● LIVE WEATHER</span>
+        <span className="weather-loc">📍 {locationName ? locationName.split(",")[0] : "Bankura"}</span>
+      </div>
+      <div className="weather-badge-main">
+        <div className="weather-temp-group">
+          <span className="weather-icon">{info.icon}</span>
+          <span className="weather-temp">{Math.round(weather.temperature)}°C</span>
+        </div>
+        <div className="weather-details">
+          <span className="weather-status">{info.text}</span>
+          <span className="weather-wind">💨 বাতাস: {weather.windspeed} km/h</span>
+        </div>
+      </div>
+      <div className="weather-advice-tag">{info.advice}</div>
+    </div>
+  );
+}
 
 function PandalExplorer() {
   const [location, setLocation] = useState("");
   const [allPujas, setAllPujas] = useState([]);
   const [filteredPandals, setFilteredPandals] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searched, setSearched] = useState(false);
   const [selectedPuja, setSelectedPuja] = useState(null);
 
-  
-  const [locationStatus, setLocationStatus] = useState("prompt"); 
+  const [locationStatus, setLocationStatus] = useState("prompt");
+  const [userCoords, setUserCoords] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchPujas = async () => {
+      setLoading(true);
       try {
-        const response = await fetch("https://agomoni-backend-1.onrender.com//api/pujas");
+        const response = await fetch("https://agomoni-backend-1.onrender.com/api/pujas");
         const data = await response.json();
 
         let pujaList = [];
@@ -38,17 +124,29 @@ function PandalExplorer() {
           return { ...p, images: imgs };
         });
 
-        setAllPujas(formattedList);
-        setFilteredPandals(formattedList);
-        setSearched(true);
+        if (isMounted) {
+          setAllPujas(formattedList);
+          setFilteredPandals(formattedList);
+          setSearched(true);
+        }
       } catch (err) {
         console.error("Failed to load pujas:", err);
-        setAllPujas([]);
-        setFilteredPandals([]);
+        if (isMounted) {
+          setAllPujas([]);
+          setFilteredPandals([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchPujas();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleSearch = () => {
@@ -60,10 +158,10 @@ function PandalExplorer() {
       return;
     }
 
+    const searchTxt = location.toLowerCase();
     const filtered = allPujas.filter((p) => {
       const pName = p.name ? p.name.toLowerCase() : "";
       const pLoc = p.location ? p.location.toLowerCase() : "";
-      const searchTxt = location.toLowerCase();
       return pLoc.includes(searchTxt) || pName.includes(searchTxt);
     });
 
@@ -79,7 +177,8 @@ function PandalExplorer() {
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log("Latitude:", position.coords.latitude, "Longitude:", position.coords.longitude);
+        const { latitude, longitude } = position.coords;
+        setUserCoords({ latitude, longitude });
         setLocationStatus("success");
       },
       (error) => {
@@ -93,7 +192,7 @@ function PandalExplorer() {
   const handleSwitchToNextPandal = (nextPujaName) => {
     if (!nextPujaName) return;
 
-    const cleanName = nextPujaName.split('(')[0].trim().toLowerCase();
+    const cleanName = nextPujaName.split("(")[0].trim().toLowerCase();
 
     const targetPuja = allPujas.find((p) => {
       const pName = p.name ? p.name.toLowerCase() : "";
@@ -113,13 +212,13 @@ function PandalExplorer() {
     if (customMapLink && customMapLink.startsWith("http")) {
       window.open(customMapLink, "_blank");
     } else {
-      const destination = encodeURIComponent(`${name}, ${currentArea || 'Bankura'}`);
+      const destination = encodeURIComponent(`${name}, ${currentArea || "Bankura"}`);
       window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=walking`, "_blank");
     }
   };
 
   return (
-    <main 
+    <main
       className="pandal-explorer-page"
       style={{
         backgroundImage: `linear-gradient(180deg, rgba(20, 5, 15, 0.75) 0%, rgba(50, 10, 25, 0.68) 50%, rgba(20, 5, 15, 0.82) 100%), url("/Gallery/PE.jpeg")`
@@ -129,19 +228,15 @@ function PandalExplorer() {
 
       <div className="pandal-explorer-content">
         <div className="explorer-header">
-          <p className="explorer-small-title">
-            ✦ DURGA PUJA EXPLORER ✦
-          </p>
-
+          <p className="explorer-small-title">✦ DURGA PUJA EXPLORER ✦</p>
           <h1>
-            Discover
-            <span> Pandals</span>
+            Discover <span>Pandals</span>
           </h1>
-
-          <p>
-            Enter a location and discover Durga Puja pandals around you.
-          </p>
+          <p>Enter a location and discover Durga Puja pandals around you.</p>
         </div>
+
+        {/* Weather Widget on Main Page */}
+        {userCoords && <WeatherCard lat={userCoords.latitude} lon={userCoords.longitude} />}
 
         {locationStatus === "prompt" && (
           <div className="location-permission-box">
@@ -162,15 +257,15 @@ function PandalExplorer() {
 
         {locationStatus === "success" && (
           <div style={{ textAlign: "center", marginBottom: "25px", color: "#ffd36a", fontSize: "14px" }}>
-            ✨ Location detected successfully! <span style={{ cursor: "pointer", textDecoration: "underline", marginLeft: "10px" }} onClick={() => setLocationStatus("prompt")}>Reset</span>
+            ✨ Location detected successfully!{" "}
+            <span style={{ cursor: "pointer", textDecoration: "underline", marginLeft: "10px" }} onClick={() => setLocationStatus("prompt")}>
+              Reset
+            </span>
           </div>
         )}
 
         <div className="location-search">
-          <label>
-            📍 Where do you want to start exploring?
-          </label>
-
+          <label>📍 Where do you want to start exploring?</label>
           <div className="search-box">
             <input
               type="text"
@@ -178,28 +273,22 @@ function PandalExplorer() {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSearch();
-                }
+                if (e.key === "Enter") handleSearch();
               }}
             />
-
-            <button onClick={handleSearch}>
-              🔍 Search
-            </button>
+            <button onClick={handleSearch}>🔍 Search</button>
           </div>
         </div>
 
-        {searched && (
+        {loading ? (
+          <div style={{ textAlign: "center", color: "#ffd36a", marginTop: "40px", fontSize: "18px" }}>
+            🛕 Loading Pandals...
+          </div>
+        ) : searched && (
           <div className="pandal-results">
             <div className="results-heading">
-              <h2>
-                Pandals {location ? `near ${location}` : "Collection"}
-              </h2>
-
-              <span>
-                {Array.isArray(filteredPandals) ? filteredPandals.length : 0} places found
-              </span>
+              <h2>Pandals {location ? `near ${location}` : "Collection"}</h2>
+              <span>{Array.isArray(filteredPandals) ? filteredPandals.length : 0} places found</span>
             </div>
 
             {!Array.isArray(filteredPandals) || filteredPandals.length === 0 ? (
@@ -209,23 +298,14 @@ function PandalExplorer() {
             ) : (
               <div className="pandal-grid">
                 {filteredPandals.map((pandal, index) => (
-                  <div
-                    className="pandal-card"
-                    key={pandal._id || index}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {/* 🌟 ট্রান্সপারেন্ট টপ ব্যানার এবং স্টাইলিশ টেক্সট বক্স */}
+                  <div className="pandal-card" key={pandal._id || index} style={{ animationDelay: `${index * 0.1}s` }}>
                     <div className="pandal-transparent-top-banner">
                       <div className="stylish-badge-pill">🛕 PUJA SPOT</div>
                     </div>
 
                     <div className="pandal-card-content">
-                      <span className="pandal-number">
-                        PANDAL {String(index + 1).padStart(2, "0")}
-                      </span>
-
+                      <span className="pandal-number">PANDAL {String(index + 1).padStart(2, "0")}</span>
                       <h3>{pandal.name}</h3>
-
                       <p>📍 {pandal.location}</p>
 
                       {pandal.theme && (
@@ -235,10 +315,7 @@ function PandalExplorer() {
                       )}
 
                       <div className="card-button-group">
-                        <button
-                          className="details-button"
-                          onClick={() => setSelectedPuja(pandal)}
-                        >
+                        <button className="details-button" onClick={() => setSelectedPuja(pandal)}>
                           Details →
                         </button>
 
@@ -248,13 +325,8 @@ function PandalExplorer() {
                             if (pandal.mapLink) {
                               window.open(pandal.mapLink, "_blank");
                             } else {
-                              const query = encodeURIComponent(
-                                `${pandal.name}, ${pandal.location}`
-                              );
-                              window.open(
-                                `https://www.google.com/maps/search/?api=1&query=${query}`,
-                                "_blank"
-                              );
+                              const query = encodeURIComponent(`${pandal.name}, ${pandal.location}`);
+                              window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, "_blank");
                             }
                           }}
                         >
@@ -273,11 +345,10 @@ function PandalExplorer() {
       {selectedPuja && (
         <div className="pandal-modal-overlay" onClick={() => setSelectedPuja(null)}>
           <div className="modal-stage-wrapper" onClick={(e) => e.stopPropagation()}>
-            
             {(selectedPuja.restaurant1 || selectedPuja.restaurant2) && (
               <div className="aesthetic-trail-column left-trail">
                 {selectedPuja.restaurant1 && (
-                  <div 
+                  <div
                     className="aesthetic-side-card primary-card rose-theme"
                     onClick={() => openPlaceMap(selectedPuja.restaurant1, selectedPuja.restaurant1Map, selectedPuja.location)}
                   >
@@ -301,7 +372,7 @@ function PandalExplorer() {
                 )}
 
                 {selectedPuja.restaurant2 && (
-                  <div 
+                  <div
                     className="aesthetic-side-card secondary-card rose-theme"
                     onClick={() => openPlaceMap(selectedPuja.restaurant2, selectedPuja.restaurant2Map, selectedPuja.location)}
                   >
@@ -321,7 +392,7 @@ function PandalExplorer() {
             {(selectedPuja.nextPuja1 || selectedPuja.nextPuja2) && (
               <div className="aesthetic-trail-column right-trail">
                 {selectedPuja.nextPuja1 && (
-                  <div 
+                  <div
                     className="aesthetic-side-card primary-card gold-theme"
                     onClick={() => handleSwitchToNextPandal(selectedPuja.nextPuja1)}
                   >
@@ -345,7 +416,7 @@ function PandalExplorer() {
                 )}
 
                 {selectedPuja.nextPuja2 && (
-                  <div 
+                  <div
                     className="aesthetic-side-card secondary-card gold-theme"
                     onClick={() => handleSwitchToNextPandal(selectedPuja.nextPuja2)}
                   >
@@ -363,11 +434,20 @@ function PandalExplorer() {
             )}
 
             <div className="pandal-modal">
-              <button className="modal-close" onClick={() => setSelectedPuja(null)}>✕</button>
+              <button className="modal-close" onClick={() => setSelectedPuja(null)}>
+                ✕
+              </button>
 
               <div className="modal-header">
                 <h2>{selectedPuja.name}</h2>
                 <p>📍 {selectedPuja.location}</p>
+
+                {/*  UNIQUE LIVE WEATHER BADGE INSIDE PUJA DETAILS MODAL */}
+                <PandalModalWeather
+                  lat={selectedPuja.latitude || userCoords?.latitude}
+                  lon={selectedPuja.longitude || userCoords?.longitude}
+                  locationName={selectedPuja.location}
+                />
               </div>
 
               {Array.isArray(selectedPuja.images) && selectedPuja.images.length > 0 && (
@@ -379,7 +459,8 @@ function PandalExplorer() {
                       alt={`${selectedPuja.name} ${i + 1}`}
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=800&q=80";
+                        e.target.src =
+                          "https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=800&q=80";
                       }}
                     />
                   ))}
@@ -403,14 +484,16 @@ function PandalExplorer() {
               {(selectedPuja.restaurant1 || selectedPuja.restaurant2 || selectedPuja.restaurant3) && (
                 <div className="modal-section">
                   <div className="modal-section-title">🍽️ Nearest Restaurants / Food Spots</div>
-                  <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div style={{ marginTop: "8px", display: "flex", flexDirection: "column", gap: "8px" }}>
                     {selectedPuja.restaurant1 && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ color: '#e5e7eb', fontSize: '14px' }}>🍴 {selectedPuja.restaurant1}</span>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ color: "#e5e7eb", fontSize: "14px" }}>🍴 {selectedPuja.restaurant1}</span>
                         <button
                           className="map-button"
-                          style={{ padding: '4px 10px', fontSize: '11.5px', marginTop: 0 }}
-                          onClick={() => openPlaceMap(selectedPuja.restaurant1, selectedPuja.restaurant1Map, selectedPuja.location)}
+                          style={{ padding: "4px 10px", fontSize: "11.5px", marginTop: 0 }}
+                          onClick={() =>
+                            openPlaceMap(selectedPuja.restaurant1, selectedPuja.restaurant1Map, selectedPuja.location)
+                          }
                         >
                           🗺️ Route
                         </button>
@@ -418,12 +501,14 @@ function PandalExplorer() {
                     )}
 
                     {selectedPuja.restaurant2 && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ color: '#e5e7eb', fontSize: '14px' }}>🍴 {selectedPuja.restaurant2}</span>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ color: "#e5e7eb", fontSize: "14px" }}>🍴 {selectedPuja.restaurant2}</span>
                         <button
                           className="map-button"
-                          style={{ padding: '4px 10px', fontSize: '11.5px', marginTop: 0 }}
-                          onClick={() => openPlaceMap(selectedPuja.restaurant2, selectedPuja.restaurant2Map, selectedPuja.location)}
+                          style={{ padding: "4px 10px", fontSize: "11.5px", marginTop: 0 }}
+                          onClick={() =>
+                            openPlaceMap(selectedPuja.restaurant2, selectedPuja.restaurant2Map, selectedPuja.location)
+                          }
                         >
                           🗺️ Route
                         </button>
@@ -431,12 +516,14 @@ function PandalExplorer() {
                     )}
 
                     {selectedPuja.restaurant3 && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ color: '#e5e7eb', fontSize: '14px' }}>🍴 {selectedPuja.restaurant3}</span>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <span style={{ color: "#e5e7eb", fontSize: "14px" }}>🍴 {selectedPuja.restaurant3}</span>
                         <button
                           className="map-button"
-                          style={{ padding: '4px 10px', fontSize: '11.5px', marginTop: 0 }}
-                          onClick={() => openPlaceMap(selectedPuja.restaurant3, selectedPuja.restaurant3Map, selectedPuja.location)}
+                          style={{ padding: "4px 10px", fontSize: "11.5px", marginTop: 0 }}
+                          onClick={() =>
+                            openPlaceMap(selectedPuja.restaurant3, selectedPuja.restaurant3Map, selectedPuja.location)
+                          }
                         >
                           🗺️ Route
                         </button>
@@ -449,9 +536,9 @@ function PandalExplorer() {
               {(selectedPuja.nextPuja1 || selectedPuja.nextPuja2) && (
                 <div className="modal-section highlight-next-section">
                   <div className="modal-section-title">🛕 Next Nearest Puja Pandals</div>
-                  <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div style={{ marginTop: "8px", display: "flex", flexDirection: "column", gap: "8px" }}>
                     {selectedPuja.nextPuja1 && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span
                           className="clickable-pandal-title"
                           title="Click to view details"
@@ -462,8 +549,10 @@ function PandalExplorer() {
                         </span>
                         <button
                           className="map-button"
-                          style={{ padding: '4px 10px', fontSize: '11.5px', marginTop: 0 }}
-                          onClick={() => openPlaceMap(selectedPuja.nextPuja1, selectedPuja.nextPuja1Map, selectedPuja.location)}
+                          style={{ padding: "4px 10px", fontSize: "11.5px", marginTop: 0 }}
+                          onClick={() =>
+                            openPlaceMap(selectedPuja.nextPuja1, selectedPuja.nextPuja1Map, selectedPuja.location)
+                          }
                         >
                           🗺️ Route
                         </button>
@@ -471,7 +560,7 @@ function PandalExplorer() {
                     )}
 
                     {selectedPuja.nextPuja2 && (
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <span
                           className="clickable-pandal-title"
                           title="Click to view details"
@@ -482,8 +571,10 @@ function PandalExplorer() {
                         </span>
                         <button
                           className="map-button"
-                          style={{ padding: '4px 10px', fontSize: '11.5px', marginTop: 0 }}
-                          onClick={() => openPlaceMap(selectedPuja.nextPuja2, selectedPuja.nextPuja2Map, selectedPuja.location)}
+                          style={{ padding: "4px 10px", fontSize: "11.5px", marginTop: 0 }}
+                          onClick={() =>
+                            openPlaceMap(selectedPuja.nextPuja2, selectedPuja.nextPuja2Map, selectedPuja.location)
+                          }
                         >
                           🗺️ Route
                         </button>
@@ -496,9 +587,17 @@ function PandalExplorer() {
               {(selectedPuja.parking || selectedPuja.toilet) && (
                 <div className="modal-section">
                   <div className="modal-section-title">🚗 Parking & Essentials</div>
-                  <div style={{ fontSize: '14px', color: '#e5e7eb', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    {selectedPuja.parking && <div>🅿️ <strong>Parking:</strong> {selectedPuja.parking}</div>}
-                    {selectedPuja.toilet && <div>🚻 <strong>Washroom:</strong> {selectedPuja.toilet}</div>}
+                  <div style={{ fontSize: "14px", color: "#e5e7eb", display: "flex", flexDirection: "column", gap: "6px" }}>
+                    {selectedPuja.parking && (
+                      <div>
+                        🅿️ <strong>Parking:</strong> {selectedPuja.parking}
+                      </div>
+                    )}
+                    {selectedPuja.toilet && (
+                      <div>
+                        🚻 <strong>Washroom:</strong> {selectedPuja.toilet}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -510,20 +609,14 @@ function PandalExplorer() {
                   if (selectedPuja.mapLink) {
                     window.open(selectedPuja.mapLink, "_blank");
                   } else {
-                    const query = encodeURIComponent(
-                      `${selectedPuja.name}, ${selectedPuja.location}`
-                    );
-                    window.open(
-                      `https://www.google.com/maps/search/?api=1&query=${query}`,
-                      "_blank"
-                    );
+                    const query = encodeURIComponent(`${selectedPuja.name}, ${selectedPuja.location}`);
+                    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, "_blank");
                   }
                 }}
               >
                 🗺️ Open Main Puja in Google Maps
               </button>
             </div>
-
           </div>
         </div>
       )}
