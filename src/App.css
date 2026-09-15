@@ -3067,3 +3067,10 @@ body {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+.agomoni-text-img {
+  height: 78px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}

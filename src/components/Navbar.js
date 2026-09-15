@@ -6,25 +6,27 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      {/* LOGO */}
-      <NavLink to="/" className="logo">
-  <img
-    className="photodurga-ma"
-    src="/iconn.jpeg" 
-    alt="Durga Ma"
-  />
-        <span className="trident">
-          <h2>𝒜𝑔𝑜𝓂𝑜𝓃𝒾</h2>
-        </span>
-      </NavLink>
+  {/* LOGO */}
+  <NavLink to="/" className="logo">
+    <img
+      className="photodurga-ma"
+      src="/iconn.jpeg" 
+      alt="Durga Ma"
+    />
+    <img
+      className="agomoni-text-img"
+      src="/webName.jpeg" /* নিশ্চিত করুন ছবিটি public ফোল্ডারে এই নামে আছে */
+      alt="Agomoni"
+    />
+  </NavLink>
 
-      {/* 3-DOT MENU BUTTON (Only for Mobile) */}
-      <div 
-        className="mobile-dots-btn" 
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        ⋮
-      </div>
+  {/* 3-DOT MENU BUTTON (Only for Mobile) */}
+  <div 
+    className="mobile-dots-btn" 
+    onClick={() => setIsOpen(!isOpen)}
+  >
+    ⋮
+  </div>
 
       {/* NAVIGATION */}
       <div className={`nav-links ${isOpen ? "mobile-menu-open" : ""}`}>
