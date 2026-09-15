@@ -2991,3 +2991,79 @@ button {
     0 0 20px rgba(255, 196, 46, 0.14);
 }
       
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(15, 10, 5, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(243, 156, 18, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  box-sizing: border-box;
+}
+body {
+  padding-top: 70px;
+}
+
+/* Royal Countdown Glassmorphic Card Styling */
+.royal-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* Glassmorphism Box for Each Digit */
+.royal-time-unit {
+  background: rgba(15, 10, 5, 0.75); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(243, 156, 18, 0.3); 
+  border-radius: 12px;
+  padding: 12px 20px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.royal-time-unit:hover {
+  transform: translateY(-3px);
+  border-color: rgba(243, 156, 18, 0.6);
+}
+
+/* Number Styling */
+.royal-time-unit strong {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #f39c12;
+  text-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+  line-height: 1.1;
+  display: block;
+}
+
+/* Label Styling (DAYS, HOURS, etc.) */
+.royal-time-unit span {
+  font-size: 0.7rem;
+  color: #e0e0e0;
+  letter-spacing: 2px;
+  margin-top: 6px;
+  display: block;
+}
+
+/* Star Separator */
+.royal-separator {
+  color: #f39c12;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

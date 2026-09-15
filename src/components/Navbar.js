@@ -8,13 +8,13 @@ function Navbar() {
     <nav className="navbar">
       {/* LOGO */}
       <NavLink to="/" className="logo">
-        <img
-          className="photodurga-ma"
-          src="/Navbar durga ma.png"
-          alt="Durga Ma"
-        />
+  <img
+    className="photodurga-ma"
+    src="/iconn.jpeg" 
+    alt="Durga Ma"
+  />
         <span className="trident">
-          <h2>𝕬𝖌𝖆𝖒𝖔𝖓𝖎</h2>
+          <h2>𝒜𝑔𝑜𝓂𝑜𝓃𝒾</h2>
         </span>
       </NavLink>
 
