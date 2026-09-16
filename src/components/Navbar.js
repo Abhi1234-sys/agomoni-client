@@ -1,36 +1,46 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import MahalayaToggle from "./MahalayaToggle"; // Adjust path according to your project structure if needed (e.g., "../components/MahalayaToggle")
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="navbar">
-  {/* LOGO */}
-  <NavLink to="/" className="logo">
-    <img
-      className="photodurga-ma"
-      src="/iconn.jpeg" 
-      alt="Durga Ma"
-    />
-    <img
-      className="agomoni-text-img"
-      src="/webName.jpeg" /* নিশ্চিত করুন ছবিটি public ফোল্ডারে এই নামে আছে */
-      alt="Agomoni"
-    />
-  </NavLink>
+      {/* LOGO */}
+      <NavLink to="/" className="logo">
+        <img
+          className="photodurga-ma"
+          src="/iconn.jpeg" 
+          alt="Durga Ma"
+        />
+        <img
+          className="agomoni-text-img"
+          src="/webName.jpeg"
+          alt="Agomoni"
+        />
+      </NavLink>
 
-  {/* 3-DOT MENU BUTTON (Only for Mobile) */}
-  <div 
-  className="mobile-dots-btn" 
-  onClick={() => setIsOpen(!isOpen)}
->
-  <span className="bar"></span>
-  <span className="bar"></span>
-  <span className="bar"></span>
-</div>
+      {/* HEADER ACTIONS (Mahalaya Chants + Mobile 3-Dot Button) */}
+      <div 
+        className="nav-actions" 
+        style={{ display: "flex", alignItems: "center", gap: "12px" }}
+      >
+        {/* Always visible on mobile before opening the 3-dot menu */}
+        <MahalayaToggle />
 
-      {/* NAVIGATION */}
+        {/* 3-DOT MENU BUTTON (Only for Mobile) */}
+        <div 
+          className="mobile-dots-btn" 
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+      </div>
+
+      {/* NAVIGATION LINKS */}
       <div className={`nav-links ${isOpen ? "mobile-menu-open" : ""}`}>
         <NavLink
           to="/"

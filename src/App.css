@@ -3146,3 +3146,8 @@ body {
   font-size: 13px;
   border: 1px solid rgba(255, 211, 106, 0.3);
 }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

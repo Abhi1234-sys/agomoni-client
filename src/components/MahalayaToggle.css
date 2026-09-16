@@ -1,0 +1,102 @@
+.mahalaya-header-badge {
+  display: flex;
+  align-items: center;
+}
+
+.mahalaya-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #ffd700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mahalaya-btn:hover {
+  background: rgba(255, 215, 0, 0.18);
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+.mahalaya-btn.active {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: #ffd700;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.6);
+}
+
+.lamp-icon {
+  font-size: 0.95rem;
+}
+
+.btn-text {
+  color: #fff8dc;
+}
+
+.sound-icon {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Audio Wave Animation when Playing */
+.sound-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.sound-wave span {
+  width: 3px;
+  background-color: #ffd700;
+  border-radius: 2px;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.sound-wave span:nth-child(1) {
+  height: 60%;
+  animation-delay: 0.1s;
+}
+
+.sound-wave span:nth-child(2) {
+  height: 100%;
+  animation-delay: 0.3s;
+}
+
+.sound-wave span:nth-child(3) {
+  height: 40%;
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .mahalaya-btn {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    gap: 5px;
+  }
+  .btn-text {
+    font-size: 0.72rem;
+  }
+  .lamp-icon {
+    font-size: 0.8rem;
+  }
+}
