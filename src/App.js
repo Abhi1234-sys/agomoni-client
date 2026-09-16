@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Dhaki from "./components/Dhaki";
 import Footer from "./components/Footer";
 import ShiuliShower from "./components/ShiuliShower";
+import KashfulProgressBar from "./components/KashfulProgressBar";
 
 // Pages import
 import Home from "./pages/Home";
@@ -100,6 +101,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        {/* KASHFUL SCROLL PROGRESS BAR */}
+        <KashfulProgressBar />
+
         {/* Background */}
         <div className="background-overlay"></div>
 

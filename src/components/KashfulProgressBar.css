@@ -1,0 +1,35 @@
+.kashful-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 99999; /* যেন নেভবারেরও ওপরে দেখা যায় */
+  pointer-events: none;
+}
+
+.kashful-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color, #ff5500), #ffd700);
+  position: relative;
+  transition: width 0.1s ease-out;
+}
+
+/* কাশফুল আইকন যা স্ক্রোল করার সাথে সাথে হাওয়ায় দুলবে */
+.kashful-icon {
+  position: absolute;
+  right: -14px;
+  top: -12px;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+  animation: kashfulSway 2s ease-in-out infinite alternate;
+}
+
+@keyframes kashfulSway {
+  0% {
+    transform: rotate(5deg) scale(1);
+  }
+  100% {
+    transform: rotate(25deg) scale(1.1);
+  }
+}
