@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Gallery.css";
+import AlponaDivider from "../components/AlponaDivider";
 
 const galleryImages = [
   {
@@ -22,17 +23,17 @@ const galleryImages = [
     title: "Pranabananda Pally Sarbojonin",
     location: "Bankura, West Bengal",
   },
-    {
+  {
     image: "/Gallery/b.jpg.jpeg",
     title: "Susunia Sarbojonin",
     location: "Bankura, West Bengal",
   },
-    {
+  {
     image: "/Gallery/d.jpg.jpeg",
     title: "Paruibad Sarbojonin",
     location: "Bankura, West Bengal",
   },
-    {
+  {
     image: "/Gallery/f.jpg.jpeg",
     title: "KeraniBandh Sarbojonin",
     location: "Bankura, West Bengal",
@@ -75,18 +76,17 @@ const protimaImages = [
     title: "Ekchala Protima",
     location: "Bankura, West Bengal",
   },
-   {
+  {
     image: "/Gallery/u.jpeg",
     title: "Classic Swarna Protima",
     location: "Bankura, West Bengal",
   },
-   {
+  {
     image: "/Gallery/v.jpeg",
     title: "Nature-Inspired Pandal Setting",
     location: "Bankura, West Bengal",
   },
 ];
-
 
 const popularChoiceImages = [
   {
@@ -200,7 +200,10 @@ function Gallery() {
           </div>
         </div>
 
-        {/*PROTIMA GALLERY */}
+        {/* ALPONA DIVIDER 1: Under Pandal Gallery */}
+        <AlponaDivider title="মণ্ডপ পরিক্রমা" />
+
+        {/* PROTIMA GALLERY */}
         <div className="gallery-header" style={{ marginTop: "90px" }}>
           <p className="gallery-small-title">✦ Divine Darshan ✦</p>
           <h1>Protima <span>Gallery</span></h1>
@@ -226,7 +229,10 @@ function Gallery() {
           </div>
         </div>
 
-        {/*SPOTLIGHT SECTION (Single Centered Big Featured Card)*/}
+        {/* ALPONA DIVIDER 2: Under Protima Gallery */}
+        <AlponaDivider title="প্রতিমা দর্শন" />
+
+        {/* SPOTLIGHT SECTION (Single Centered Big Featured Card) */}
         <div className="gallery-header spotlight-title-area" style={{ marginTop: "100px" }}>
           <p className="gallery-small-title">✦ বিশেষ আকর্ষণ ✦</p>
           <h1>Spotlight</h1>
@@ -256,6 +262,8 @@ function Gallery() {
           </div>
         </div>
 
+        {/* ALPONA DIVIDER 3: Under Spotlight */}
+        <AlponaDivider title="বিশেষ আকর্ষণ" />
 
         {/* POPULAR CHOICE SECTION (Clean, Like Previous Galleries) */}
         <div className="gallery-header" style={{ marginTop: "100px" }}>
@@ -314,6 +322,8 @@ function Gallery() {
           </div>
         </div>
 
+        {/* ALPONA DIVIDER 4: Under Popular Choice */}
+        <AlponaDivider title="জনপ্রিয় পছন্দ" />
 
         {/* Bottom message */}
         <div className="gallery-footer" style={{ marginTop: "60px" }}>

@@ -1,0 +1,44 @@
+.alpona-trail-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  color: var(--accent-color, #ff5500);
+  opacity: 0.9;
+  animation: alponaGlowFade 0.8s ease-out forwards;
+  filter: drop-shadow(0 0 6px var(--accent-color, #ff5500));
+}
+
+@keyframes alponaGlowFade {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(90deg);
+  }
+}
+
+/* কাস্টম আলপনা বর্ডার ক্লাস - কার্ডে ব্যবহারের জন্য */
+.alpona-card-border {
+  position: relative;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--accent-color), transparent) 1;
+}
+
+.alpona-card-border::before {
+  content: "❀ ❁ ❀ ❁ ❀";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  padding: 0 8px;
+  font-size: 11px;
+  color: var(--accent-color);
+  letter-spacing: 2px;
+}

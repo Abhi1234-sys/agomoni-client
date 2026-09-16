@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import AlponaDivider from "../components/AlponaDivider";
 
 function Home({
   timeLeft,
@@ -284,6 +284,10 @@ function Home({
       </div>
 
 
+      {/* ALPONA DIVIDER 1 */}
+      <AlponaDivider title="শুভ পরিক্রমা" />
+
+
       {/* ABOUT BANKURA PUJA CARNIVAL SECTION */}
       
       <section className="bankura-carnival-section">
@@ -322,6 +326,10 @@ function Home({
 
         </div>
       </section>
+
+
+      {/* ALPONA DIVIDER 2 */}
+      <AlponaDivider />
 
 
       {/* SCROLL DECORATION */}

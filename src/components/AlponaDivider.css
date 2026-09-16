@@ -1,0 +1,48 @@
+.alpona-divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 45px 0;
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.alpona-line {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-color, #ff5500),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+.alpona-svg-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 15px;
+  color: var(--accent-color, #ff5500);
+  filter: drop-shadow(0 0 8px var(--accent-color, #ff5500));
+  transition: color 0.4s ease, filter 0.4s ease;
+}
+
+.alpona-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+.alpona-divider-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: -6px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.9;
+}
