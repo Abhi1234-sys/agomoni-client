@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./ShiuliShower.css"; // নিশ্চিত করুন ফাইলটি src/components/ ফোল্ডারে আছে
 
 function ShiuliShower() {
