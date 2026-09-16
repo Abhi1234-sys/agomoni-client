@@ -100,3 +100,69 @@
     font-size: 0.8rem;
   }
 }
+/* Mobile Navbar Responsive Spacing Fix */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Reduce logo size slightly to free up horizontal space */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 48%;
+  }
+
+  .photodurga-ma {
+    height: 36px !important;
+    width: auto;
+  }
+
+  .agomoni-text-img {
+    height: 26px !important;
+    width: auto;
+  }
+
+  /* Spacing between Mahalaya Toggle and 3-Dot Button */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px !important;
+    margin-left: auto;
+  }
+
+  /* Compact Mahalaya Chants Badge for mobile screens */
+  .mahalaya-btn {
+    padding: 4px 8px !important;
+    font-size: 0.68rem !important;
+    border-radius: 14px !important;
+    gap: 4px !important;
+  }
+
+  .btn-text {
+    font-size: 0.68rem !important;
+    white-space: nowrap;
+  }
+
+  .lamp-icon {
+    font-size: 0.78rem !important;
+  }
+
+  /* Clear margins & proper touch area for 3-Dot Menu */
+  .mobile-dots-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 22px;
+    padding: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+}
