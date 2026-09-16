@@ -1,26 +1,41 @@
 import React, { useEffect } from "react";
-import "./ShiuliShower.css";
+import "./ShiuliShower.css"; // নিশ্চিত করুন ফাইলটি src/components/ ফোল্ডারে আছে
 
 function ShiuliShower() {
   useEffect(() => {
-    const handleClick = (e) => {
-      
-      if (e.target.closest("button, a, input, select, textarea, [role='button']")) {
+    const handleShower = (e) => {
+      // বাটন বা লিংক এ টাচ/ক্লিক করলে ইভেন্ট স্কিপ করবে
+      if (
+        e.target &&
+        e.target.closest &&
+        e.target.closest("button, a, input, select, textarea, [role='button']")
+      ) {
         return;
       }
 
-      const x = e.clientX;
-      const y = e.clientY;
+      // মাউস ও টাচ—উভয় ডিভাইসের জন্যই স্থানাঙ্ক (coordinates) গ্রহণ
+      let x = e.clientX;
+      let y = e.clientY;
 
-      
+      if (e.touches && e.touches.length > 0) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+      }
+
+      if (x === undefined || y === undefined) return;
+
       const flowerCount = 6;
       for (let i = 0; i < flowerCount; i++) {
         createFlower(x, y);
       }
     };
 
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
+    // pointerdown ডেস্কটপ ও মোবাইল টাচ—উভয় ডিভাইসেই স্মুথ কাজ করে
+    window.addEventListener("pointerdown", handleShower);
+
+    return () => {
+      window.removeEventListener("pointerdown", handleShower);
+    };
   }, []);
 
   const createFlower = (startX, startY) => {
@@ -44,16 +59,14 @@ function ShiuliShower() {
       </svg>
     `;
 
-    
     const screenBottomDistance = window.innerHeight - startY + 60;
-
-    const size = Math.random() * 10 + 18; 
+    const size = Math.random() * 10 + 18;
     const offsetX = (Math.random() - 0.5) * 50;
     const offsetY = (Math.random() - 0.5) * 20;
-    const fallY = screenBottomDistance; 
-    const swayX = (Math.random() - 0.5) * 140; 
-    const duration = Math.random() * 2 + 3.8; 
-    const rotate = Math.random() * 720 - 360; 
+    const fallY = screenBottomDistance;
+    const swayX = (Math.random() - 0.5) * 140;
+    const duration = Math.random() * 2 + 3.8;
+    const rotate = Math.random() * 720 - 360;
 
     flower.style.left = `${startX + offsetX}px`;
     flower.style.top = `${startY + offsetY}px`;
