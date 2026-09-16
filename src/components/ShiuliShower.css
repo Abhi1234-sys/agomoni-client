@@ -1,0 +1,52 @@
+.shiuli-flower-particle {
+  position: fixed;
+  pointer-events: none; 
+  z-index: 999999;
+  filter: drop-shadow(0px 3px 6px rgba(255, 85, 0, 0.4));
+  user-select: none;
+}
+
+@keyframes shiuliShowerAnim {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(calc(var(--sway-x) * 0.3), calc(var(--fall-y) * 0.3)) scale(1.1) rotate(calc(var(--rotate) * 0.3));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--sway-x), var(--fall-y)) scale(0.4) rotate(var(--rotate));
+  }
+}
+.shiuli-flower-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  filter: drop-shadow(0px 4px 8px rgba(255, 85, 0, 0.35));
+  user-select: none;
+}
+
+
+@keyframes shiuliSlowFallAnim {
+  0% {
+    opacity: 0.9;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(calc(var(--sway-x) * 0.5), calc(var(--fall-y) * 0.25)) scale(1) rotate(calc(var(--rotate) * 0.3));
+  }
+  60% {
+    opacity: 0.95;
+    transform: translate(calc(var(--sway-x) * -0.3), calc(var(--fall-y) * 0.65)) scale(0.95) rotate(calc(var(--rotate) * 0.7));
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--sway-x), var(--fall-y)) scale(0.85) rotate(var(--rotate));
+  }
+}

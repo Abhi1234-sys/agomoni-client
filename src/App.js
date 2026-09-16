@@ -9,6 +9,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Dhaki from "./components/Dhaki";
 import Footer from "./components/Footer";
+import ShiuliShower from "./components/ShiuliShower";
 
 // Pages import
 import Home from "./pages/Home";
@@ -102,6 +103,9 @@ function App() {
         {/* Background */}
         <div className="background-overlay"></div>
 
+        {/* SHIULI PETAL SHOWER EFFECT */}
+        <ShiuliShower />
+
         {/*NAVBAR */}
         <Navbar />
 
@@ -142,5 +146,3 @@ function App() {
 }
 
 export default App;
-
-// trigger new deployment
