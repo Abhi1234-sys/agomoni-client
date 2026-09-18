@@ -9,7 +9,6 @@ const AlponaTrail = () => {
       const particle = document.createElement("div");
       particle.className = "alpona-particle";
 
-      // Mobile screen-এ সাইজ একটু বড় এবং স্পষ্ট রাখা
       const size = isMobile 
         ? Math.random() * 16 + 18 
         : Math.random() * 12 + 14;
@@ -19,7 +18,7 @@ const AlponaTrail = () => {
       particle.style.left = `${x}px`;
       particle.style.top = `${y}px`;
 
-      // র‍্যান্ডম রোটেশন
+  
       const rotation = Math.random() * 360;
       particle.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
 

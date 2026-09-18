@@ -10,15 +10,17 @@ function Navbar() {
       {/* LOGO */}
       <NavLink to="/" className="logo">
         <img
-          className="photodurga-ma"
-          src="/iconn.jpeg" 
-          alt="Durga Ma"
-        />
-        <img
-          className="agomoni-text-img"
-          src="/webName.jpeg"
-          alt="Agomoni"
-        />
+  className="photodurga-ma"
+  src="/iconnn.png" 
+  alt="Durga Ma"
+  loading="lazy"
+/>
+<img
+  className="agomoni-text-img"
+  src="/Webname.png"
+  alt="Agomoni"
+  loading="lazy"
+/>
       </NavLink>
 
       {/* HEADER ACTIONS (Mahalaya Chants + Mobile 3-Dot Button) */}

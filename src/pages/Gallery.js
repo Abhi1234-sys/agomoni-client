@@ -4,7 +4,7 @@ import AlponaDivider from "../components/AlponaDivider";
 
 const galleryImages = [
   {
-    image: "/Gallery/Puja1.jpg",
+    image: "/Gallery/Durga_Puja_Pandal_Bankura_(2012) (1).jpg.jpeg",
     title: "Lalbazar Sarbojonin",
     location: "Bankura, West Bengal",
   },
