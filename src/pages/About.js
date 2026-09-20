@@ -314,7 +314,7 @@ function About() {
 
           <div className="social-buttons">
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/agomoni_bankura?stkn=Zm1mam1haXIwaWNr"
               target="_blank"
               rel="noreferrer"
               className="social-button instagram-button"
@@ -324,7 +324,7 @@ function About() {
             </a>
 
             <a
-              href="https://facebook.com/"
+              href=""
               target="_blank"
               rel="noreferrer"
               className="social-button facebook-button"
