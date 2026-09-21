@@ -1,13 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AlponaDivider from "../components/AlponaDivider";
+// import React from "react";
+// import { Link } from "react-router-dom";
+
+const pujaDays = [
+  {
+    date: "2026-10-16",
+    title: "SUBHO MAHA SHASHTHI",
+    bengali: "শুভ মহাষষ্ঠী",
+    message: "The sacred beginning of Durga Puja."
+  },
+  {
+    date: "2026-10-17",
+    title: "SUBHO MAHA SAPTAMI",
+    bengali: "শুভ মহাসপ্তমী",
+    message: "The celebration of Maha Saptami begins."
+  },
+  {
+    date: "2026-10-18",
+    title: "SUBHO MAHA SAPTAMI",
+    bengali: "শুভ মহাসপ্তমী",
+    message: "Maha Saptami continues for another blessed day."
+  },
+  {
+    date: "2026-10-19",
+    title: "SUBHO MAHA ASHTAMI",
+    bengali: "শুভ মহাষ্টমী",
+    message: "A sacred day of devotion and celebration."
+  },
+  {
+    date: "2026-10-20",
+    title: "SUBHO MAHA NABAMI",
+    bengali: "শুভ মহানবমী",
+    message: "A day filled with devotion, joy and celebration."
+  },
+  {
+    date: "2026-10-21",
+    title: "SUBHO BIJOYA DASHAMI",
+    bengali: "শুভ বিজয়া দশমী",
+    message: "May Maa Durga bless us all. Shubho Bijoya."
+  }
+];
+
 
 function Home({
   timeLeft,
   isPlaying,
   toggleDhak
 }) {
+    const todayKey = new Date().toLocaleDateString("en-CA");
 
+  const activePujaDay = pujaDays.find(
+    (day) => day.date === todayKey
+  );
   return (
 
     <main className="home-page">
@@ -22,12 +68,7 @@ function Home({
       <div className="hero-content">
 
 
-        {/* TOP TEXT */}
-
-        {/* <p className="welcome-text">
-          ✦ শুভ মহালয়া ✦
-        </p> */}
-
+       
 
         {/* MAIN TITLE */}
 
@@ -55,7 +96,10 @@ function Home({
 
         </div>
 
-        <span className="bengali"> 
+       
+
+
+            <span className="bengali"> 
           আগমনী বার্তা
         </span>
         <p className="bengali">
@@ -65,73 +109,10 @@ function Home({
           𝑨 𝒍𝒊𝒗𝒊𝒏𝒈 𝒈𝒖𝒊𝒅𝒆 𝒕𝒐 𝑩𝒂𝒏𝒌𝒖𝒓𝒂’𝒔 𝑫𝒖𝒓𝒈𝒂 𝑷𝒖𝒋𝒂, 𝒉𝒆𝒍𝒑𝒊𝒏𝒈 𝒚𝒐𝒖 𝒅𝒊𝒔𝒄𝒐𝒗𝒆𝒓 𝒑𝒂𝒏𝒅𝒂𝒍𝒔, 𝒆𝒙𝒑𝒍𝒐𝒓𝒆 𝒕𝒉𝒆𝒊𝒓 𝒔𝒕𝒐𝒓𝒊𝒆𝒔 𝒂𝒏𝒅 𝒕𝒓𝒂𝒅𝒊𝒕𝒊𝒐𝒏𝒔, 𝒇𝒊𝒏𝒅 𝒏𝒆𝒂𝒓𝒃𝒚 𝒆𝒙𝒑𝒆𝒓𝒊𝒆𝒏𝒄𝒆𝒔, 𝒂𝒏𝒅 𝒑𝒍𝒂𝒏 𝒚𝒐𝒖𝒓 𝒑𝒆𝒓𝒇𝒆𝒄𝒕 𝒑𝒂𝒏𝒅𝒂𝒍-𝒉𝒐𝒑𝒑𝒊𝒏𝒈 𝒋𝒐𝒖𝒓𝒏𝒆𝒚.
         </p>
 
-        {/* COUNTDOWN TITLE */}
+       
+        {/* * ROYAL DURGA PUJA COUNTDOWN *
 
-        {/* <h2 className="countdown-title">
-          Durga Puja Countdown
-        </h2> */}
-
-
-        {/* COUNTDOWN */}
-
-        {/* <div className="countdown">
-
-          <div className="time-card">
-
-            <strong>
-              {String(timeLeft.days).padStart(2, "0")}
-            </strong>
-
-            <span>
-              Days
-            </span>
-
-          </div>
-
-
-          <div className="time-card">
-
-            <strong>
-              {String(timeLeft.hours).padStart(2, "0")}
-            </strong>
-
-            <span>
-              Hours
-            </span>
-
-          </div>
-
-
-          <div className="time-card">
-
-            <strong>
-              {String(timeLeft.minutes).padStart(2, "0")}
-            </strong>
-
-            <span>
-              Minutes
-            </span>
-
-          </div>
-
-
-          <div className="time-card">
-
-            <strong>
-              {String(timeLeft.seconds).padStart(2, "0")}
-            </strong>
-
-            <span>
-              Seconds
-            </span>
-
-          </div>
-
-        </div> */}
-
-        {/* ROYAL DURGA PUJA COUNTDOWN */}
-
-        <div className="royal-countdown">
+         <div className="royal-countdown">
 
           <div className="countdown-heading">
             <span className="heading-line"></span>
@@ -145,7 +126,7 @@ function Home({
           </div>
 
 
-          {/* Decorative rotating halo */}
+          * Decorative rotating halo *
 
           <div className="countdown-mandala">
 
@@ -168,7 +149,7 @@ function Home({
           </div>
 
 
-          {/* Numbers */}
+          * Numbers *
 
           <div className="royal-time">
 
@@ -204,23 +185,169 @@ function Home({
               </strong>
               <span>MINUTES</span>
             </div>
-
+          
 
             <div className="royal-separator">
               ✦
             </div>
-
-
-            <div className="royal-time-unit">
+             <div className="royal-time-unit">
               <strong>
                 {String(timeLeft.seconds).padStart(2, "0")}
               </strong>
-              <span>SECONDS</span>
+              <span>SECONDS</span> 
             </div>
 
-          </div>
+          </div>  */}
+    {activePujaDay ? (
+
+  /* ================================
+     PUJA DAY DISPLAY
+     ================================ */
+
+  <div className="puja-day-container">
+
+    <div className="puja-day-glow"></div>
+
+    <div className="puja-day-content">
+
+      <div className="puja-symbol">
+        ✦
+      </div>
+
+      <p className="puja-day-label">
+        DURGA PUJA 2026
+      </p>
+
+      <div className="puja-date">
+        {new Date(
+          activePujaDay.date + "T00:00:00"
+        ).toLocaleDateString("en-IN", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        })}
+      </div>
+
+      <h2 className="puja-day-title">
+        {activePujaDay.title}
+      </h2>
+
+      <div className="puja-bengali">
+        {activePujaDay.bengali}
+      </div>
+
+      <div className="puja-day-divider">
+        <span>✦</span>
+        <div></div>
+        <span>🪷</span>
+        <div></div>
+        <span>✦</span>
+      </div>
+
+      <p className="puja-day-message">
+        {activePujaDay.message}
+      </p>
+
+    </div>
+
+  </div>
+
+) : (
+
+  /* ================================
+     YOUR EXISTING ROYAL COUNTDOWN
+     ================================ */
+
+  <div className="royal-countdown">
+
+    <div className="countdown-heading">
+
+      <span className="heading-line"></span>
+
+      <div>
+        <small>THE AUSPICIOUS ARRIVAL</small>
+        <h2>Durga Puja Countdown</h2>
+      </div>
+
+      <span className="heading-line"></span>
+
+    </div>
 
 
+    {/* Decorative rotating halo */}
+
+    <div className="countdown-mandala">
+
+      <div className="mandala-ring ring-one"></div>
+      <div className="mandala-ring ring-two"></div>
+      <div className="mandala-ring ring-three"></div>
+
+      <div className="countdown-center">
+
+        <div className="lotus">
+          🪷
+        </div>
+
+        <span className="coming-text">
+          SHE IS COMING
+        </span>
+
+      </div>
+
+    </div>
+
+
+    
+
+    <div className="royal-time">
+
+      <div className="royal-time-unit">
+        <strong>
+          {String(timeLeft.days).padStart(2, "0")}
+        </strong>
+        <span>DAYS</span>
+      </div>
+
+      <div className="royal-separator">
+        ✦
+      </div>
+
+      <div className="royal-time-unit">
+        <strong>
+          {String(timeLeft.hours).padStart(2, "0")}
+        </strong>
+        <span>HOURS</span>
+      </div>
+
+      <div className="royal-separator">
+        ✦
+      </div>
+
+      <div className="royal-time-unit">
+        <strong>
+          {String(timeLeft.minutes).padStart(2, "0")}
+        </strong>
+        <span>MINUTES</span>
+      </div>
+
+      <div className="royal-separator">
+        ✦
+      </div>
+
+      <div className="royal-time-unit">
+        <strong>
+          {String(timeLeft.seconds).padStart(2, "0")}
+        </strong>
+        <span>SECONDS</span>
+      </div>
+
+    </div>
+
+  </div>
+  
+
+)}
+      <div>
           {/* Bottom ornament */}
 
           <div className="countdown-ornament">

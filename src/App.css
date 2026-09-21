@@ -1139,7 +1139,299 @@ button {
     infinite;
 }
 
+/* =========================================
+   PUJA DAY FESTIVAL CARD
+   ========================================= */
 
+.puja-day-container {
+  position: relative;
+  width: min(680px, 90%);
+  margin: 15px auto 0;
+  padding: 35px 30px;
+  overflow: hidden;
+
+  /* Royal dark red background */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(80, 8, 18, 0.88),
+      rgba(25, 5, 10, 0.92)
+    );
+
+  border: 1px solid rgba(255, 196, 46, 0.55);
+  border-radius: 22px;
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 196, 46, 0.12),
+    inset 0 0 30px rgba(255, 196, 46, 0.04);
+
+  animation: pujaCardAppear 1s ease-out;
+}
+
+
+/* Golden glowing circle behind the text */
+.puja-day-glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 196, 46, 0.18),
+    rgba(255, 196, 46, 0.05) 40%,
+    transparent 70%
+  );
+
+  filter: blur(10px);
+
+  animation: pujaGlow 4s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+
+/* Content stays above the glow */
+.puja-day-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+
+/* Top decorative symbol */
+.puja-symbol {
+  color: #ffc42e;
+  font-size: 28px;
+  margin-bottom: 8px;
+
+  text-shadow:
+    0 0 8px rgba(255, 196, 46, 0.5),
+    0 0 20px rgba(255, 196, 46, 0.25);
+
+  animation: pujaSparkle 2.5s ease-in-out infinite;
+}
+
+
+/* DURGA PUJA 2026 */
+.puja-day-label {
+  margin: 0 0 12px;
+
+  color: rgba(255, 196, 46, 0.9);
+
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+/* Date */
+.puja-date {
+  margin-bottom: 12px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-family: "Cinzel", serif;
+  font-size: 14px;
+
+  letter-spacing: 2px;
+}
+
+
+/* Main Puja day */
+.puja-day-title {
+  margin: 0;
+
+  color: #ffc42e;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 1.2;
+
+  text-shadow:
+    0 0 10px rgba(255, 196, 46, 0.25),
+    0 0 25px rgba(255, 196, 46, 0.15);
+
+  animation: pujaTitleGlow 3s ease-in-out infinite;
+}
+
+
+/* Bengali text */
+.puja-bengali {
+  margin-top: 12px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 1.5px;
+
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+
+/* Decorative divider */
+.puja-day-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin: 22px auto;
+}
+
+
+.puja-day-divider div {
+  width: 70px;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #ffc42e,
+    transparent
+  );
+
+  box-shadow: 0 0 6px rgba(255, 196, 46, 0.4);
+}
+
+
+.puja-day-divider span {
+  color: #ffc42e;
+  font-size: 15px;
+
+  text-shadow:
+    0 0 10px rgba(255, 196, 46, 0.5);
+}
+
+
+/* Message */
+.puja-day-message {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+
+  font-style: italic;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes pujaCardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+@keyframes pujaGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+
+@keyframes pujaSparkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.25) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+
+@keyframes pujaTitleGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(255, 196, 46, 0.15);
+  }
+
+  50% {
+    text-shadow:
+      0 0 15px rgba(255, 196, 46, 0.35),
+      0 0 30px rgba(255, 196, 46, 0.15);
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .puja-day-container {
+    width: 90%;
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .puja-day-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .puja-date {
+    font-size: 12px;
+  }
+
+  .puja-day-title {
+    font-size: 28px;
+  }
+
+  .puja-bengali {
+    font-size: 17px;
+  }
+
+  .puja-day-message {
+    font-size: 13px;
+  }
+
+  .puja-day-divider div {
+    width: 45px;
+  }
+}
 
 
 .countdown-ornament {
