@@ -17,7 +17,7 @@ function Navbar() {
 />
 <img
   className="agomoni-text-img"
-  src="/Webname.png"
+  src="/WebName.png"
   alt="Agomoni"
   loading="lazy"
 />
