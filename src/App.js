@@ -11,6 +11,7 @@ import Dhaki from "./components/Dhaki";
 import Footer from "./components/Footer";
 import ShiuliShower from "./components/ShiuliShower";
 import KashfulProgressBar from "./components/KashfulProgressBar";
+// import VirtualPuja from './pages/VirtualPuja';
 
 
 // Pages import
@@ -137,6 +138,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/emergency" element={<EmergencyHelp />} />
+          {/* <Route path="/virtual-puja" element={<VirtualPuja />} /> */}
         </Routes>
 
         {/*FOOTER */}

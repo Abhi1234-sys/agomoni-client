@@ -1,0 +1,243 @@
+/* Virtual Puja Spotlight Banner (Fixed Layout) */
+.virtual-puja-spotlight {
+  background: linear-gradient(135deg, #1f170f 0%, #2a1f13 100%);
+  border: 2px solid #ffaa00;
+  border-radius: 16px;
+  padding: 25px 20px;
+  margin: 35px auto;
+  max-width: 1000px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.25);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.spotlight-badge {
+  display: inline-block;
+  background: rgba(255, 170, 0, 0.15);
+  color: #ffaa00;
+  border: 1px solid #ffaa00;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+.spotlight-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.spotlight-text {
+  flex: 1;
+  text-align: center;
+}
+
+.spotlight-text h2 {
+  color: #ffaa00;
+  font-size: 1.5rem;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  display: block;
+}
+
+.spotlight-text p {
+  color: #ddb888;
+  font-size: 0.95rem;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.spotlight-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffaa00, #ff7700);
+  color: #000;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(255, 170, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotlight-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 170, 0, 0.6);
+}
+
+.spotlight-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  padding-left: 10px;
+}
+
+.glowing-diya {
+  display: inline-block;
+  animation: pulse-glow 2s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px #ffaa00);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px #ff5500);
+  }
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+  .spotlight-content {
+    flex-direction: column-reverse;
+  }
+  .spotlight-icon-box {
+    padding-left: 0;
+    margin-bottom: 10px;
+  }
+  .spotlight-text h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Virtual Puja Highlight Banner Card */
+.home-puja-banner {
+  position: relative !important;
+  z-index: 10 !important;
+  background: linear-gradient(145deg, rgba(35, 22, 12, 0.95), rgba(20, 12, 6, 0.98)) !important;
+  border: 2px solid #ffaa00 !important;
+  border-radius: 18px !important;
+  padding: 30px 20px !important;
+  margin: 35px auto !important;
+  max-width: 800px !important;
+  width: 90% !important;
+  box-shadow: 0 0 30px rgba(255, 170, 0, 0.35), inset 0 0 15px rgba(255, 170, 0, 0.1) !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Top Badge */
+.home-puja-banner .banner-badge {
+  display: inline-block !important;
+  background: rgba(255, 170, 0, 0.18) !important;
+  color: #ffd700 !important;
+  border: 1px solid #ffaa00 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  margin-bottom: 15px !important;
+  text-shadow: 0 0 8px rgba(255, 170, 0, 0.5) !important;
+}
+
+/* Heading & Subtitle */
+.home-puja-banner h2 {
+  color: #ffffff !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin: 8px 0 12px 0 !important;
+  text-shadow: 0 0 12px rgba(255, 170, 0, 0.5) !important;
+}
+
+.home-puja-banner p {
+  color: #e2d1c3 !important;
+  font-size: 1rem !important;
+  margin: 0 0 22px 0 !important;
+  line-height: 1.5 !important;
+}
+/* Semi-transparent Glassmorphism Banner Box */
+.home-puja-banner {
+  position: relative !important;
+  z-index: 10 !important;
+  background: rgba(20, 12, 6, 0.35) !important; /* Low opacity so background is visible */
+  backdrop-filter: blur(10px) !important; /* Soft blur effect on background */
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 2px solid rgba(255, 170, 0, 0.8) !important;
+  border-radius: 18px !important;
+  padding: 30px 20px !important;
+  margin: 35px auto !important;
+  max-width: 800px !important;
+  width: 90% !important;
+  box-shadow: 0 0 25px rgba(255, 170, 0, 0.3), inset 0 0 15px rgba(255, 170, 0, 0.1) !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Badge Style */
+.home-puja-banner .banner-badge {
+  display: inline-block !important;
+  background: rgba(255, 170, 0, 0.2) !important;
+  color: #ffd700 !important;
+  border: 1px solid #ffaa00 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+  margin-bottom: 15px !important;
+  text-shadow: 0 0 8px rgba(255, 170, 0, 0.6) !important;
+}
+
+/* Heading & Paragraph */
+.home-puja-banner h2 {
+  color: #ffffff !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  margin: 8px 0 12px 0 !important;
+  text-shadow: 0 0 12px rgba(255, 170, 0, 0.7) !important;
+}
+
+.home-puja-banner p {
+  color: #f5e6d3 !important;
+  font-size: 1rem !important;
+  margin: 0 0 22px 0 !important;
+  line-height: 1.5 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Glowing Button */
+.home-puja-banner a.banner-action-btn,
+.home-puja-banner .banner-action-btn {
+  display: inline-block !important;
+  background: linear-gradient(135deg, #ffaa00, #ff5500) !important;
+  color: #0f0c08 !important;
+  font-weight: bold !important;
+  padding: 12px 28px !important;
+  border-radius: 30px !important;
+  text-decoration: none !important;
+  font-size: 1rem !important;
+  box-shadow: 0 4px 18px rgba(255, 170, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.home-puja-banner a.banner-action-btn:hover,
+.home-puja-banner .banner-action-btn:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 8px 25px rgba(255, 170, 0, 0.8) !important;
+  color: #000000 !important;
+}
+
+/* Diya Icon Glow */
+.home-puja-banner .banner-diya-glow {
+  font-size: 2.2rem !important;
+  display: inline-block !important;
+  margin-top: 15px !important;
+  animation: diya-pulse 2s infinite alternate !important;
+}
+
+@keyframes diya-pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px #ffaa00);
+  }
+  100% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px #ff4500);
+  }
+}

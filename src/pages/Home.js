@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AlponaDivider from "../components/AlponaDivider";
+import './Home.css';
 // import React from "react";
 // import { Link } from "react-router-dom";
 
@@ -108,6 +109,7 @@ function Home({
         <p className="smallpara-homepage">
           𝑨 𝒍𝒊𝒗𝒊𝒏𝒈 𝒈𝒖𝒊𝒅𝒆 𝒕𝒐 𝑩𝒂𝒏𝒌𝒖𝒓𝒂’𝒔 𝑫𝒖𝒓𝒈𝒂 𝑷𝒖𝒋𝒂, 𝒉𝒆𝒍𝒑𝒊𝒏𝒈 𝒚𝒐𝒖 𝒅𝒊𝒔𝒄𝒐𝒗𝒆𝒓 𝒑𝒂𝒏𝒅𝒂𝒍𝒔, 𝒆𝒙𝒑𝒍𝒐𝒓𝒆 𝒕𝒉𝒆𝒊𝒓 𝒔𝒕𝒐𝒓𝒊𝒆𝒔 𝒂𝒏𝒅 𝒕𝒓𝒂𝒅𝒊𝒕𝒊𝒐𝒏𝒔, 𝒇𝒊𝒏𝒅 𝒏𝒆𝒂𝒓𝒃𝒚 𝒆𝒙𝒑𝒆𝒓𝒊𝒆𝒏𝒄𝒆𝒔, 𝒂𝒏𝒅 𝒑𝒍𝒂𝒏 𝒚𝒐𝒖𝒓 𝒑𝒆𝒓𝒇𝒆𝒄𝒕 𝒑𝒂𝒏𝒅𝒂𝒍-𝒉𝒐𝒑𝒑𝒊𝒏𝒈 𝒋𝒐𝒖𝒓𝒏𝒆𝒚.
         </p>
+ 
 
        
         {/* * ROYAL DURGA PUJA COUNTDOWN *
@@ -344,9 +346,30 @@ function Home({
     </div>
 
   </div>
+
+  
   
 
 )}
+
+                   {/* --- Virtual Puja Highlight Banner --- */}
+{/* <div className="home-puja-banner">
+  <div className="banner-badge">✨ আগমনী বিশেষ আয়োজন</div>
+  <div className="banner-body">
+    <div className="banner-info">
+      <h2>ভার্চুয়াল পূজা ও আরতি উপভোগ করুন</h2>
+      <p>ঘরে বসেই নিন মণ্ডপের ডিজিটাল অভিজ্ঞতা ও আরতির অনুভূতি।</p>
+      <a href="/virtual-puja" className="banner-action-btn">
+        এখনই দেখুন →
+      </a>
+    </div>
+    <div className="banner-icon">
+      <span className="banner-diya-glow">🪔</span>
+    </div>
+  </div>
+</div> */}
+
+
       <div>
           {/* Bottom ornament */}
 
@@ -411,8 +434,12 @@ function Home({
       </div>
 
 
+
+
+
       {/* ALPONA DIVIDER 1 */}
       <AlponaDivider title="শুভ পরিক্রমা" />
+
 
 
       {/* ABOUT BANKURA PUJA CARNIVAL SECTION */}
@@ -453,6 +480,8 @@ function Home({
 
         </div>
       </section>
+
+
 
 
       {/* ALPONA DIVIDER 2 */}
