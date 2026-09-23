@@ -11,7 +11,7 @@ import Dhaki from "./components/Dhaki";
 import Footer from "./components/Footer";
 import ShiuliShower from "./components/ShiuliShower";
 import KashfulProgressBar from "./components/KashfulProgressBar";
-import AlponaTrail from "./components/AlponaTrail";
+
 
 // Pages import
 import Home from "./pages/Home";
@@ -102,8 +102,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app">
-        {/* ALPONA CURSOR TRAIL */}
-        <AlponaTrail />
+     
 
         {/* KASHFUL SCROLL PROGRESS BAR */}
         <KashfulProgressBar />
