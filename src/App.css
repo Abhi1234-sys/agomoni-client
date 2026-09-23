@@ -87,8 +87,8 @@ button {
 
 }
 .photodurga-ma{
-  height: 100px;
-  width: 100px;
+  height: 110px;
+  width: 130px;
   object-fit: contain;
 }
 
@@ -97,7 +97,7 @@ button {
 
   align-items: center;
 
-  gap: 10px;
+  gap: 5px;
 
   min-width: 230px;
 
@@ -109,7 +109,7 @@ button {
     "Playfair Display",
     serif;
 
-  font-size: 26px;
+  font-size: 36px;
 
   font-style: italic;
 
