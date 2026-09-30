@@ -90,42 +90,42 @@ const protimaImages = [
 
 const popularChoiceImages = [
   {
-    image: "/Gallery/1.jpeg",
+    image: "/Gallery/1.webp",
     title: "People's Choice Winner - Lalbazar",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/2.jpeg",
+    image: "/Gallery/2.webp",
     title: "Crowd Favorite Protima",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/3.jpeg",
+    image: "/Gallery/3.webp",
     title: "Most Visited Pandal",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/6.jpeg",
+    image: "/Gallery/6.webp",
     title: "Artistic Excellence Award",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/7.jpeg",
+    image: "/Gallery/7.webp",
     title: "Most Visited Pandal",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/8.jpeg",
+    image: "/Gallery/8.webp",
     title: "Most Visited Pandal",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/9.jpeg",
+    image: "/Gallery/9.webp",
     title: "Most Visited Pandal",
     location: "Bankura, West Bengal",
   },
   {
-    image: "/Gallery/10.jpeg",
+    image: "/Gallery/10.webp",
     title: "Most Visited Pandal",
     location: "Bankura, West Bengal",
   },
