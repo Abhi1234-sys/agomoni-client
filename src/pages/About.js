@@ -1,6 +1,6 @@
 import React from "react";
 import "./About-test.css";
-import aboutBg from "../assets/about-bg.jpeg";
+import aboutBg from "../assets/about-bg.webp";
 
 function About() {
   return (
