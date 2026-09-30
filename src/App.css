@@ -407,7 +407,7 @@ button {
 /* Image 1 */
 
 .bg1 {
-  background-image: url("./home-bg/durga_puja.jpg");
+  background-image: url("./home-bg/durga_puja.webp");
 
   animation-delay: 0s;
 }
@@ -416,7 +416,7 @@ button {
 /* Image 2 */
 
 .bg2 {
-  background-image: url("./home-bg/durga_puja2.jpeg");
+  background-image: url("./home-bg/durga_puja2.webp");
 
   animation-delay: 5s;
 }
@@ -425,7 +425,7 @@ button {
 /* Image 3 */
 
 .bg3 {
-  background-image: url("./home-bg/durga_puja3.jpeg");
+  background-image: url("./home-bg/durga_puja3.webp");
 
   animation-delay: 10s;
 }
@@ -434,7 +434,7 @@ button {
 /* Image 4 */ 
 
  .bg4 {
-  background-image: url("./home-bg/durga_puja4.png");
+  background-image: url("./home-bg/durga_puja4.webp");
 
   animation-delay: 15s;
 } 
