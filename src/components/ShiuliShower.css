@@ -6,25 +6,24 @@
   user-select: none;
   will-change: transform, opacity;
 }
-
 @keyframes shiuliSlowFallAnim {
   0% {
     opacity: 0.9;
-    transform: translate(0, 0) scale(0.6) rotate(0deg);
+    transform: translate3d(0, 0, 0) scale(0.6) rotate(0deg);
   }
   25% {
     opacity: 1;
-    transform: translate(calc(var(--sway-x) * 0.5), calc(var(--fall-y) * 0.25)) scale(1) rotate(calc(var(--rotate) * 0.3));
+    transform: translate3d(calc(var(--sway-x) * 0.5), calc(var(--fall-y) * 0.25), 0) scale(1) rotate(calc(var(--rotate) * 0.3));
   }
   60% {
     opacity: 0.95;
-    transform: translate(calc(var(--sway-x) * -0.3), calc(var(--fall-y) * 0.65)) scale(0.95) rotate(calc(var(--rotate) * 0.7));
+    transform: translate3d(calc(var(--sway-x) * -0.3), calc(var(--fall-y) * 0.65), 0) scale(0.95) rotate(calc(var(--rotate) * 0.7));
   }
   85% {
     opacity: 0.8;
   }
   100% {
     opacity: 0;
-    transform: translate(var(--sway-x), var(--fall-y)) scale(0.85) rotate(var(--rotate));
+    transform: translate3d(var(--sway-x), var(--fall-y), 0) scale(0.85) rotate(var(--rotate));
   }
 }

@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* 1. Prevent unnecessary rendering of off-screen heavy sections */
+section, 
+footer, 
+.home-section, 
+.hero-container {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* 2. Promote background & animation elements to dedicated GPU layers */
+.hero-section, 
+.gallery-slider, 
+img, 
+.card, 
+.navbar {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* 3. Isolate background animation overlays from the scroll layer */
+.shiuli-shower, 
+.alpona-trail {
+  pointer-events: none;
+  will-change: transform;
+}

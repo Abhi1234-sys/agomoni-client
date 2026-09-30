@@ -241,3 +241,24 @@
     filter: drop-shadow(0 0 20px #ff4500);
   }
 }
+
+
+
+
+
+
+.home-background-slideshow {
+  pointer-events: none; 
+  z-index: 0;           
+}
+
+.home-bg {
+  will-change: opacity; 
+  backface-visibility: hidden;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
