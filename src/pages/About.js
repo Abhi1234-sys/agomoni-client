@@ -295,6 +295,49 @@ function About() {
                 </div>
               </div>
             </div>
+                        {/* Developer 3 */}
+            {/* <div className="developer-card">
+              <div className="developer-avatar">
+                <img
+                  src="./developers/developer3.jpeg"
+                  alt="Developer 3"
+                />
+              </div>
+
+              <div className="developer-info">
+                <h3>Soumili Roy</h3>
+                <span className="developer-role">
+                  Social media manager 
+                </span>
+                <p>
+                 develops and executes digital strategies to grow a brand's online presence, engage audiences, and track performance metrics across social platforms.
+                </p>
+
+                <div className="developer-socials">
+                  <a
+                    href="https://www.instagram.com/debayan740?igsi=MXRjcmJxc3N2cHV5dA=="
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Instagram
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61553066443544"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href="mailto:soumiliroy@gmail.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div> */}
           </div>
         </section>
 
