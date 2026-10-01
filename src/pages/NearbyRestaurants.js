@@ -140,9 +140,9 @@ function NearbyRestaurants() {
             <img 
               src="/Gallery/Bankura-Map.jpg" 
               alt="Bankura Zone Map" 
-              style={{ width: "100%", height: "180px", objectFit: "cover", display: "block" }}
+              style={{ width: "100%", height: "350px", objectFit: "cover", display: "block" }}
               onError={(e) => {
-                e.target.src = "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80";
+                e.target.src = "https://www.researchgate.net/publication/383661130/figure/fig1/AS:11431281275272158@1725329495336/Map-depicting-the-study-areas-location-a-India-b-West-Bengal-and-c-Bankura-district.png";
               }}
             />
             <div style={{ padding: "8px", background: "rgba(20, 5, 10, 0.8)", fontSize: "12px", color: "#ffd36a", letterSpacing: "1px" }}>
