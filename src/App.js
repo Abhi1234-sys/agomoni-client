@@ -9,7 +9,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Dhaki from "./components/Dhaki";
 import Footer from "./components/Footer";
-// import ShiuliShower from "./components/ShiuliShower";
+import ShiuliShower from "./components/ShiuliShower";
 //  import KashfulProgressBar from "./components/KashfulProgressBar";
 // import VirtualPuja from './pages/VirtualPuja';
 
@@ -112,7 +112,7 @@ function App() {
         <div className="background-overlay"></div>
 
         {/* SHIULI PETAL SHOWER EFFECT */}
-        {/* <ShiuliShower /> */}
+         <ShiuliShower /> 
 
         {/*NAVBAR */}
         <Navbar />
