@@ -1249,3 +1249,19 @@
   text-align: center;
   border: 1px dashed rgba(255, 215, 0, 0.3);
 }
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#root {
+    overflow-x: hidden;
+}

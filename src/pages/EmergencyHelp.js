@@ -50,7 +50,7 @@ function EmergencyHelp() {
     <main 
       className="utility-page emergency-page"
       style={{
-        backgroundImage: `linear-gradient(135deg, rgba(30, 10, 15, 0.88), rgba(90, 30, 30, 0.75)), url("/Gallery/w.jpeg")`
+        backgroundImage: `linear-gradient(135deg, rgba(30, 10, 15, 0.88), rgba(90, 30, 30, 0.75)), url("/Gallery/w.webp")`
       }}
     >
       <div className="utility-overlay"></div>

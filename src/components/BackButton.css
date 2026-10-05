@@ -1,0 +1,140 @@
+/* =========================================
+   SIMPLE ROYAL BACK BUTTON
+   ========================================= */
+
+.royal-back-button {
+  position: fixed;
+  top: 90px;
+  left: 18px;
+  z-index: 9999;
+
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  /* Completely transparent */
+  background: transparent;
+  border: none;
+
+  color: #ffc42e;
+
+  /* Golden glow */
+  box-shadow:
+    0 0 8px rgba(255, 196, 46, 0.45),
+    0 0 18px rgba(255, 196, 46, 0.30),
+    0 0 30px rgba(255, 196, 46, 0.18);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.3s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================
+   VISIBLE
+   ========================================= */
+
+.royal-back-button.back-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  pointer-events: auto;
+}
+
+
+/* =========================================
+   HIDDEN WHEN SCROLLING UP
+   ========================================= */
+
+.royal-back-button.back-hidden {
+  opacity: 0;
+
+  transform: translateY(-70px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   ARROW
+   ========================================= */
+
+.back-arrow {
+  font-size: 21px;
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: #ffc42e;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* Hide text and decoration */
+.back-text,
+.back-flower {
+  display: none;
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.royal-back-button:hover {
+  background: rgba(70, 8, 18, 0.9);
+
+  transform: translateX(-2px);
+
+  box-shadow:
+    0 0 10px rgba(255, 196, 46, 0.65),
+    0 0 22px rgba(255, 196, 46, 0.45),
+    0 0 40px rgba(255, 196, 46, 0.25);
+}
+
+
+
+.royal-back-button:hover .back-arrow {
+  transform: translateX(-3px);
+}
+
+
+/* =========================================
+   CLICK
+   ========================================= */
+
+.royal-back-button:active {
+  transform: scale(0.92);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .royal-back-button {
+
+    top: 82px;
+    left: 10px;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 7px;
+  }
+
+  .back-arrow {
+    font-size: 19px;
+  }
+}

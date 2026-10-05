@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 // import ShiuliShower from "./components/ShiuliShower";
 //  import KashfulProgressBar from "./components/KashfulProgressBar";
 // import VirtualPuja from './pages/VirtualPuja';
-
+import BackButton from "./components/BackButton";
 
 // Pages import
 import Home from "./pages/Home";
@@ -116,7 +116,7 @@ function App() {
 
         {/*NAVBAR */}
         <Navbar />
-
+        <BackButton/>
         {/* ROUTES*/}
         <Routes>
           <Route
