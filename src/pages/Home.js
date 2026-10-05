@@ -418,7 +418,7 @@ function Home({
 
         {/* SMALL DHAK BUTTON */}
 
-        <button
+        {/* <button
           className="play-button"
           onClick={toggleDhak}
         >
@@ -428,7 +428,7 @@ function Home({
             : "🥁 Play Dhak"
           }
 
-        </button>
+        </button> */}
 
 
       </div>
