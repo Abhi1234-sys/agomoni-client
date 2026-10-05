@@ -1,5 +1,5 @@
 /* =========================================
-   SIMPLE ROYAL BACK BUTTON
+   ROYAL BACK BUTTON
    ========================================= */
 
 .royal-back-button {
@@ -11,6 +11,7 @@
   width: 38px;
   height: 38px;
   padding: 0;
+  margin: 0;
 
   display: flex;
   align-items: center;
@@ -19,71 +20,50 @@
   cursor: pointer;
 
   /* Completely transparent */
-  background: transparent;
-  border: none;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+  /* Remove default browser button appearance */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* Remove mobile tap highlight */
+  -webkit-tap-highlight-color: transparent;
 
   color: #ffc42e;
-
-  /* Golden glow */
-  box-shadow:
-    0 0 8px rgba(255, 196, 46, 0.45),
-    0 0 18px rgba(255, 196, 46, 0.30),
-    0 0 30px rgba(255, 196, 46, 0.18);
 
   transition:
     transform 0.25s ease,
-    opacity 0.3s ease,
-    box-shadow 0.25s ease;
-}
-
-/* =========================================
-   VISIBLE
-   ========================================= */
-
-.royal-back-button.back-visible {
-  opacity: 1;
-
-  transform: translateY(0);
-
-  pointer-events: auto;
+    opacity 0.3s ease;
 }
 
 
 /* =========================================
-   HIDDEN WHEN SCROLLING UP
-   ========================================= */
-
-.royal-back-button.back-hidden {
-  opacity: 0;
-
-  transform: translateY(-70px);
-
-  pointer-events: none;
-}
-
-
-/* =========================================
-   ARROW
+   GOLDEN BACK ARROW
    ========================================= */
 
 .back-arrow {
+  display: block;
+
   font-size: 30px;
+  line-height: 1;
+
+  /* Thick arrow */
   font-weight: 900;
+
   color: #ffc42e;
-  -webkit-text-stroke: 0.7px #ffc42e;
 
+  /* Glow belongs ONLY to the arrow */
   text-shadow:
-    0 0 6px rgba(255, 196, 46, 0.8),
-    0 0 14px rgba(255, 196, 46, 0.5);
+    0 0 5px rgba(255, 196, 46, 0.9),
+    0 0 12px rgba(255, 196, 46, 0.65),
+    0 0 20px rgba(255, 196, 46, 0.35);
 
-  transition: transform 0.25s ease;
-}
-
-
-/* Hide text and decoration */
-.back-text,
-.back-flower {
-  display: none;
+  transition:
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
 }
 
 
@@ -92,29 +72,63 @@
    ========================================= */
 
 .royal-back-button:hover {
-  background: rgba(70, 8, 18, 0.9);
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 
-  transform: translateX(-2px);
-
-  box-shadow:
-    0 0 10px rgba(255, 196, 46, 0.65),
-    0 0 22px rgba(255, 196, 46, 0.45),
-    0 0 40px rgba(255, 196, 46, 0.25);
+  transform: translateX(-3px);
 }
 
-
-
 .royal-back-button:hover .back-arrow {
-  transform: translateX(-3px);
+  transform: translateX(-4px);
+
+  text-shadow:
+    0 0 6px rgba(255, 196, 46, 1),
+    0 0 14px rgba(255, 196, 46, 0.8),
+    0 0 24px rgba(255, 196, 46, 0.5);
 }
 
 
 /* =========================================
-   CLICK
+   CLICK / FOCUS
+   Prevent any box appearing
    ========================================= */
 
-.royal-back-button:active {
-  transform: scale(0.92);
+.royal-back-button:active,
+.royal-back-button:focus,
+.royal-back-button:focus-visible {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   SCROLL VISIBILITY
+   ========================================= */
+
+.royal-back-button.back-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.royal-back-button.back-hidden {
+  opacity: 0;
+  transform: translateY(-70px);
+  pointer-events: none;
+}
+
+
+/* =========================================
+   HIDE TEXT / DECORATION
+   ========================================= */
+
+.back-text,
+.back-flower {
+  display: none;
 }
 
 
@@ -123,19 +137,20 @@
    ========================================= */
 
 @media (max-width: 600px) {
-
   .royal-back-button {
-
     top: 82px;
     left: 10px;
 
     width: 34px;
     height: 34px;
 
-    border-radius: 7px;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
   }
 
   .back-arrow {
-    font-size: 19px;
+    font-size: 28px;
   }
 }

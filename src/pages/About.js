@@ -262,7 +262,7 @@ function About() {
             <div className="developer-card">
               <div className="developer-avatar">
                 <img
-                  src="/developers/developer2_reduced.jpeg"
+                  src="/developers/developer2.jpeg"
                   alt="Developer 2"
                 />
               </div>
@@ -299,7 +299,7 @@ function About() {
              <div className="developer-card">
               <div className="developer-avatar">
                 <img
-                  src="./developers/developer3.2_reduced.jpeg"
+                  src="./developers/developer3.2.jpeg"
                   alt="Developer 3"
                 />
               </div>
