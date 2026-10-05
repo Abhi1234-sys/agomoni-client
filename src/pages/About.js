@@ -262,7 +262,7 @@ function About() {
             <div className="developer-card">
               <div className="developer-avatar">
                 <img
-                  src="/developers/developer2.jpeg"
+                  src="/developers/developer2_reduced.jpeg"
                   alt="Developer 2"
                 />
               </div>
@@ -270,7 +270,7 @@ function About() {
               <div className="developer-info">
                 <h3>Abhimanyu Mahato</h3>
                 <span className="developer-role">
-                  Backend Developer & Database management expert
+                  Backend Developer 
                 </span>
                 <p>
                   Interested in technology, problem solving and creating
@@ -296,10 +296,10 @@ function About() {
               </div>
             </div>
                         {/* Developer 3 */}
-            {/* <div className="developer-card">
+             <div className="developer-card">
               <div className="developer-avatar">
                 <img
-                  src="./developers/developer3.jpeg"
+                  src="./developers/developer3.2_reduced.jpeg"
                   alt="Developer 3"
                 />
               </div>
@@ -337,7 +337,7 @@ function About() {
                   </a>
                 </div>
               </div>
-            </div> */}
+            </div> 
           </div>
         </section>
 
