@@ -607,7 +607,7 @@ button {
 
 
 
-.time-card {
+/* .time-card {
   position: relative;
 
   width: 105px;
@@ -642,12 +642,34 @@ button {
     transform 0.4s ease,
     border-color 0.4s ease,
     box-shadow 0.4s ease;
+} */
+ .time-card {
+  position: relative;
+
+  width: 105px;
+  height: 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* REMOVE BOX APPEARANCE */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  box-shadow: none;
+
+  overflow: visible;
+
+  transition: transform 0.4s ease;
 }
 
 
 
 
-.time-card::before {
+/* .time-card::before {
   content: "";
 
   position: absolute;
@@ -692,6 +714,10 @@ button {
   right: -30px;
 
   pointer-events: none;
+} */
+ .time-card::before,
+.time-card::after {
+  display: none;
 }
 
 
@@ -1130,7 +1156,7 @@ button {
 
   font-size: 15px;
 
-  margin-top: -15px;
+  margin-top: -1px;
 
   animation:
     sparkle
@@ -3313,25 +3339,30 @@ body {
 }
 
 /* Glassmorphism Box for Each Digit */
+/* Royal Countdown - No Box */
 .royal-time-unit {
-  background: rgba(15, 10, 5, 0.75); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(243, 156, 18, 0.3); 
-  border-radius: 12px;
-  padding: 12px 20px;
-  min-width: 80px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  padding: 0;
+  min-width: 105px;
+
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+
+  transition: transform 0.3s ease;
 }
 
 .royal-time-unit:hover {
   transform: translateY(-3px);
-  border-color: rgba(243, 156, 18, 0.6);
+ 
 }
 
 /* Number Styling */
@@ -3442,4 +3473,64 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+/* =========================================
+   MOBILE ROYAL COUNTDOWN FIX
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  .royal-time {
+    width: 100%;
+    max-width: 100%;
+    gap: 4px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    overflow: visible;
+  }
+
+  .royal-time-unit {
+    min-width: 0 !important;
+    width: auto;
+    flex: 1 1 0;
+    padding: 0 !important;
+    margin: 0;
+  }
+
+  .royal-time-unit strong {
+    font-size: clamp(32px, 9vw, 45px);
+  }
+
+  .royal-time-unit span {
+    font-size: 8px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  .royal-separator {
+    flex: 0 0 auto;
+    font-size: 11px;
+    margin: 0;
+  }
+}
+@media (max-width: 380px) {
+
+  .royal-time {
+    gap: 2px;
+    padding: 0 2px;
+  }
+
+  .royal-time-unit strong {
+    font-size: 30px;
+  }
+
+  .royal-time-unit span {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .royal-separator {
+    font-size: 9px;
+  }
 }
