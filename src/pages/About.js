@@ -315,7 +315,7 @@ function About() {
 
                 <div className="developer-socials">
                   <a
-                    href="https://www.instagram.com/debayan740?igsi=MXRjcmJxc3N2cHV5dA=="
+                    href="https://www.instagram.com/the_soumili_vibes?stkn=bjd5cGFmOHRtdW15"
                     target="_blank"
                     rel="noreferrer"
                   >
