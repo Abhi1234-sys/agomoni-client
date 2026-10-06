@@ -148,26 +148,137 @@ function PandalExplorer() {
       isMounted = false;
     };
   }, []);
+  // 🔎 Normalize text for better search
+const normalizeSearchText = (text) => {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\u0980-\u09ff\s]/g, "")
+    .trim();
+};
 
-  const handleSearch = () => {
-    if (!Array.isArray(allPujas)) return;
 
-    if (!location.trim()) {
-      setFilteredPandals(allPujas);
-      setSearched(true);
-      return;
+// 🔎 Calculate how similar two words are
+const getEditDistance = (a, b) => {
+  const matrix = Array.from({ length: b.length + 1 }, () =>
+    Array(a.length + 1).fill(0)
+  );
+
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i][0] = i;
+  }
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b[i - 1] === a[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] =
+          Math.min(
+            matrix[i - 1][j - 1] + 1, // replace
+            matrix[i][j - 1] + 1,     // insert
+            matrix[i - 1][j] + 1      // delete
+          );
+      }
     }
+  }
 
-    const searchTxt = location.toLowerCase();
-    const filtered = allPujas.filter((p) => {
-      const pName = p.name ? p.name.toLowerCase() : "";
-      const pLoc = p.location ? p.location.toLowerCase() : "";
-      return pLoc.includes(searchTxt) || pName.includes(searchTxt);
+  return matrix[b.length][a.length];
+};
+
+
+// 🔎 Check whether the search is close enough to the word
+const isFuzzyMatch = (search, text) => {
+  if (!search || !text) return false;
+
+  const searchWords = search.split(/\s+/).filter(Boolean);
+  const textWords = text.split(/\s+/).filter(Boolean);
+
+  return searchWords.some((searchWord) => {
+    return textWords.some((textWord) => {
+      // Exact / partial match
+      if (
+        textWord.includes(searchWord) ||
+        searchWord.includes(textWord)
+      ) {
+        return true;
+      }
+
+      // Small spelling mistake
+      const distance = getEditDistance(searchWord, textWord);
+
+      const allowedDistance =
+        searchWord.length <= 4
+          ? 1
+          : searchWord.length <= 8
+          ? 2
+          : 3;
+
+      return distance <= allowedDistance;
     });
+  });
+};
+  const handleSearch = () => {
+  if (!Array.isArray(allPujas)) return;
 
-    setFilteredPandals(filtered);
+  const searchTxt = normalizeSearchText(location);
+
+  // Empty search → show everything
+  if (!searchTxt) {
+    setFilteredPandals(allPujas);
     setSearched(true);
-  };
+    return;
+  }
+
+  const filtered = allPujas
+    .map((p) => {
+      const pName = normalizeSearchText(p.name || "");
+      const pLoc = normalizeSearchText(p.location || "");
+
+      let score = 0;
+
+      // Exact name match
+      if (pName === searchTxt) {
+        score += 100;
+      }
+
+      // Name contains search
+      if (pName.includes(searchTxt)) {
+        score += 80;
+      }
+
+      // Location contains search
+      if (pLoc.includes(searchTxt)) {
+        score += 60;
+      }
+
+      // Fuzzy name match
+      if (isFuzzyMatch(searchTxt, pName)) {
+        score += 50;
+      }
+
+      // Fuzzy location match
+      if (isFuzzyMatch(searchTxt, pLoc)) {
+        score += 30;
+      }
+
+      return {
+        puja: p,
+        score
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((item) => item.puja);
+
+  setFilteredPandals(filtered);
+  setSearched(true);
+};
 
   const handleUseMyCoordinates = () => {
     if (!navigator.geolocation) {
