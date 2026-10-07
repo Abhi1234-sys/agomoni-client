@@ -1,54 +1,28 @@
 
 
+
 .pandal-explorer-page {
-  min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: visible;
+  min-height: 100vh;
+  width: 100%;
   padding: 110px 25px 80px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(20, 5, 15, 0.75) 0%,
-      rgba(50, 10, 25, 0.68) 50%,
-      rgba(20, 5, 15, 0.82) 100%
-    );
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: white;
-}
-
-
-
-.pandal-explorer-page::before {
-  content: "";
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  top: -180px;
-  left: -150px;
-  background: rgba(255, 170, 50, 0.18);
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: glowMove 7s ease-in-out infinite alternate;
+  background: linear-gradient(135deg, #120308 0%, #2d0a17 50%, #140207 100%);
+  overflow-x: clip;
 }
 
 .pandal-explorer-page::after {
   content: "";
   position: absolute;
-  width: 400px;
-  height: 400px;
-  right: -150px;
-  bottom: -150px;
-  background: rgba(220, 60, 100, 0.18);
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: glowMove2 8s ease-in-out infinite alternate;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(220, 60, 100, 0.18), transparent 70%);
+  pointer-events: none;
 }
 
-@keyframes glowMove {
+/* @keyframes glowMove {
   from { transform: translate(0, 0); }
   to { transform: translate(100px, 80px); }
 }
@@ -56,25 +30,17 @@
 @keyframes glowMove2 {
   from { transform: translate(0, 0); }
   to { transform: translate(-80px, -60px); }
-}
+} */
 
 
 
 .pandal-explorer-overlay {
-  position: fixed ;
+  position: fixed;
   inset: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.75)
-    );
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
   pointer-events: none;
   z-index: 0;
 }
-
 
 
 .pandal-explorer-content {
@@ -129,13 +95,13 @@
   font-style: italic;
   color: #ffd36a;
   font-family: Georgia, serif;
-  animation: goldenText 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 18px rgba(255, 200, 80, 0.35);
 }
 
-@keyframes goldenText {
+/* @keyframes goldenText {
   from { text-shadow: 0 0 5px rgba(255, 200, 80, 0.2); }
   to { text-shadow: 0 0 25px rgba(255, 200, 80, 0.45); }
-}
+} */
 
 .explorer-header p {
   max-width: 620px;
@@ -153,14 +119,8 @@
   margin: 45px auto 0;
   padding: 30px;
   border-radius: 28px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.13),
-      rgba(255, 255, 255, 0.04)
-    );
+  background: rgba(40, 15, 25, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(20px);
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
   animation: searchAppear 1s ease 0.3s both;
 }
@@ -307,13 +267,12 @@
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  background: rgba(18, 5, 9, 0.18); 
+  background: rgba(18, 5, 9, 0.75);
   border: 1px solid rgba(255, 211, 106, 0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
-  animation: cardAppear 0.6s ease both;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 260px;
   display: flex;
   flex-direction: column;
 }
@@ -330,12 +289,8 @@
 }
 
 .pandal-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(255, 211, 106, 0.8);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 180, 70, 0.25);
-  background: rgba(18, 5, 9, 0.28);
+  transform: translateY(-6px);
 }
-
 
 
 .pandal-transparent-top-banner {
@@ -457,21 +412,19 @@
 /* 
    MODAL POPUP & STAGE WRAPPER
  */
-
 .pandal-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.92);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   padding: 20px;
   box-sizing: border-box;
+  overscroll-behavior: contain;
   animation: fadeIn 0.3s ease;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -596,10 +549,8 @@
   width: 100%;
   padding: 18px 16px;
   background: linear-gradient(145deg, rgba(30, 8, 14, 0.96), rgba(12, 4, 6, 0.96));
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s ease;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
   box-sizing: border-box;
   text-align: left;
@@ -936,6 +887,71 @@
     bottom: auto !important;
   }
 } */
+
+  .left-trail,
+  .right-trail,
+  .card-heart-aura {
+    animation: none !important;
+  }
+
+  @media (max-width: 700px) {
+  .pandal-explorer-page {
+    padding: 100px 16px 60px;
+  }
+
+  .explorer-small-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .explorer-header h1 {
+    font-size: 48px;
+    letter-spacing: -1px;
+  }
+
+  .explorer-header p {
+    font-size: 15px;
+  }
+
+  .location-search {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .search-box input,
+  .search-box button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .results-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pandal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pandal-modal-overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 20px 12px;
+  }
+
+  .pandal-modal {
+    padding: 22px 18px;
+    max-height: 88vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
 /* =====================================================
    MOBILE MODAL SCROLL FIX
 ===================================================== */
@@ -1136,15 +1152,13 @@
   margin-top: 14px;
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(20, 5, 15, 0.4) 100%);
   border: 1px solid rgba(255, 215, 0, 0.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 14px;
   padding: 12px 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .modal-weather-badge:hover {
@@ -1252,16 +1266,14 @@
 html,
 body,
 #root {
-    width: 100%;
-    min-height: 100%;
-    margin: 0;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
 }
 
 body {
-    overflow-x: hidden;
-    overflow-y: auto;
+  overflow-x: clip;
 }
-
 #root {
     overflow-x: hidden;
 }

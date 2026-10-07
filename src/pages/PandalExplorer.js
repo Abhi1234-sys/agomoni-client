@@ -329,13 +329,32 @@ const isFuzzyMatch = (search, text) => {
   };
 
   return (
-    <main
-      className="pandal-explorer-page"
-      style={{
-        backgroundImage: `linear-gradient(180deg, rgba(20, 5, 15, 0.75) 0%, rgba(50, 10, 25, 0.68) 50%, rgba(20, 5, 15, 0.82) 100%), url("/Gallery/PE.jpeg")`
-      }}
-    >
-      <div className="pandal-explorer-overlay"></div>
+  <main
+  className="pandal-explorer-page"
+  style={{
+    position: "relative",
+    minHeight: "100vh",
+    overflowX: "hidden"
+  }}
+>
+  {/* Ei fixed background div-ti ekdom prothome bosiye din */}
+  {/* <div 
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      backgroundImage: `linear-gradient(135deg, rgba(30, 10, 15, 0.88), rgba(90, 30, 30, 0.75)), url("${process.env.PUBLIC_URL}/Gallery/w.jpeg")`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      zIndex: -1,
+      pointerEvents: "none"
+    }}
+  ></div> */}
+
+  <div className="pandal-explorer-overlay"></div>
 
       <div className="pandal-explorer-content">
         <div className="explorer-header">

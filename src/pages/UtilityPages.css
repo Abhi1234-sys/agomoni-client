@@ -4,17 +4,22 @@
   --utility-accent: #f7b955;
   --utility-accent-strong: #e97842;
   min-height: 100vh;
+  min-height: 100dvh;
+  height: auto; 
   position: relative;
   overflow-x: hidden; 
+  overflow-y: visible; 
   padding: 100px 20px 80px; 
   color: #fff8ed;
   background-color: #241619;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   font-family: "DM Sans", sans-serif;
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 .utility-page::before,
@@ -510,7 +515,43 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .spotlight-grid {
-    grid-template-columns: 1fr;
+  .utility-page {
+    height: auto !important;
+    min-height: 100dvh;
+    background-attachment: scroll !important;
+    background-position: top center;
+    overflow-y: auto !important;
+  }
+  
+  .utility-overlay,
+  .location-permission-box,
+  .utility-search-box,
+  .utility-card,
+  .spotlight-badge {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Ekhane animation gulo off kore dewa holo */
+  .utility-card, 
+  .utility-header, 
+  .utility-search-box {
+    animation: none !important;
+  }
+
+  .location-permission-box {
+    background: rgba(20, 5, 8, 0.95);
+  }
+  .utility-search-box {
+    background: rgba(16, 15, 18, 0.95);
+  }
+  .utility-card {
+    background: rgba(20, 18, 20, 0.95);
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
   }
 }
+
